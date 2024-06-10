@@ -1,0 +1,93 @@
+.usuario {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tela_perfil {
+    width: 900px;
+    height: 350px;
+    background: #fff;
+    border: 5px solid #777;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 25px;
+}
+
+.tela_perfil div {
+    width: 30vw;
+    align-items: center;
+}
+
+.perfil {
+    border-radius: 100%;
+    width: 150px;
+
+}
+
+.imagens_perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.perfil_button {
+    margin: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 2px;
+    border: 2px solid #a1a0a0;
+    opacity: 0.2;
+    border-radius: 5px;
+}
+
+.edit {
+    height: 15px;
+    margin-left: 10px;
+    display: inline;
+    align-self: center;
+    cursor: pointer;
+}
+
+.tela_perfil select {
+    height: 25px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 15px;
+    opacity: 0.2;
+    cursor: pointer;
+    margin: 10px;
+    border: 2px solid #a1a0a0;
+}
+
+#imagens img{
+    border-radius: 100%;
+    width: 50px;
+    border: 0.2rem solid #a1a0a0;
+    cursor: pointer;
+}
+
+.lista_imagens {
+    /* width: 15px; */
+    height: 75px;
+    display: none;
+}
+
+.edicao {
+    margin: -3rem 0 2rem 0;
+}
+
+.edicao input {
+    background-color: transparent;
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+}
+
+.close {
+    color: #000;
+    cursor: pointer;
+    height: 15px;
+}

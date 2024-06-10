@@ -1,82 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Página Inicial</title>
+  <title>39Talk | Página Inicial</title>
 
-    <script src="./js/sessao.js"></script>
-
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <script src="./js/sessao.js"></script>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
-    <div class="header">
-      <div class="container">
-        <h1 class="titulo">AquaTech</h1>
-        <ul class="navbar">
-          <li class="agora">
-            <a href="#">Inicial</a>
-          </li>
-          <li>
-            <a href="simulador.html">Simulador</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  
-    <div class="banner">
-      <div class="container">
-        <p>Preservando <span>hoje</span> para existirem <span>amanhã</span>.</p>
-      </div>
-    </div>
-  
-    <div class="social">
-      <div class="container">
-        <div class="boxes">
-          <div class="box">
-            <img src="assets/imgs/planet-earth_color.png">
-            <h4>Missão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/lightbulb_color.png">
-            <h4>Visão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/growth_color.png">
-            <h4>Valores</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
+
+  <header>
+    <nav class="nav-bar">
+        <div class="logo">
+            <h1>39TALK</h1>
         </div>
-      </div>
+        <div class="nav-list">
+            <ul>
+                <li class="nav-item"><a href="#" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="#sobre1" class="nav-link">Sobre o Projeto</a></li>
+                <li class="nav-item"><a href="#sobre3" class="nav-link"> Sobre mim</a></li>
+            </ul>
+        </div>
+        <div class="login-button">
+            <button><a href="./cadastrar.html">Entrar</a></button>
+        </div>
+    </nav>
     </div>
-  
-    <div class="footer">
-      <div class="container">
-        <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-        <span class="version">v1.0.0</span>
-      </div>
+</header>
+
+  <section class="slider">
+    <div class="slider-content">
+        <div class="slide-box primeiro">
+            <img class="img-desktop" src="./assets/imagem/virtual.png" alt="slide 1">
+        </div>
     </div>
-  </body>
+</section>
+
+  <section class="sobre" id="sobre1">
+    <div class="container">
+        <div class="box">
+            <div class="content">
+                <h3>O que é VOCALOID?</h3>
+                <p>Vocaloid é um software de síntese de voz desenvolvido <br>
+                  pela Yamaha, que permite criar canções com vozes geradas <br> 
+                  por computador a partir de textos. Usuários podem compor <br> 
+                  músicas utilizando diferentes vozes, conhecidas como <br>
+                  "vocaloids", que são representadas por personagens virtuais. <br>
+                  O software é amplamente utilizado na música pop e na cultura otaku, especialmente no Japão.</p>         
+                <a href="https://www.vocaloid.com/en/">mais informações</a>
+            </div>
+        </div>
+</section>
+<section class="sobre" id="sobre2">
+  <div class="container">
+      <div class="box">
+          <div class="content">
+              <h3>Sobre o Projeto</h3>
+              <p>Esse projeto tem como foco descontrair e mostrar mais <br>
+                sobre vocaloid para fãs ou pessoas novas nesse tema. <br> 
+                Focando mais nos Vocaloids da Crypton que são os mais <br> 
+                famosos e conhecidos dentro do fandom <br>        
+              <a href="https://vocaloid.fandom.com/wiki/Crypton_Future_Media,_Inc.">mais informações</a>
+          </div>
+      </div>
+</section>
+<section class="sobre" id="sobre3">
+  <div class="container">
+      <div class="box">
+          <div class="content">
+              <h3>Minha relação com vocaloid?</h3>
+              <p>Vocaloid foi uma mudança na minha vida desde que descobri <br>
+                sobre esse software por um video da Hatsune Miku no youtube <br> 
+                junto da minha irmã <br> 
+                Comecei a me interessar por tecnologia, IAs e como algo simples <br>
+                poderia ser tão impactante.<br> </p>         
+              <a href="https://www.vocaloid.com/en/">mais informações</a>
+          </div>
+      </div>
+</section>
+
+  <div class="footer">
+    <div class="container">
+      
+    </div>
+  </div>
+</body>
 
 </html>

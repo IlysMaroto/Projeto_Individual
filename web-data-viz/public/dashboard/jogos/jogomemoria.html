@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/jogomemoria.css" />
+    <title>Jogo da memória</title>
+  </head>
+  <body>
+    <div class="menuToggle">
+      <div class="icon">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </div>
+    </div>
+    <div id="caixaInicio">
+      <h1>Jogo da memória</h1>
+      <button onclick="iniciar()">Começar a jogar</button>
+    </div>
+    <main id="jogo">
+      <div class="carta" data-card="miku">
+        <img class="carta-face" src="./testeIcon/miku.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="kaito">
+        <img class="carta-face" src="./testeIcon/kaito.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="meiko">
+        <img class="carta-face" src="./testeIcon/meiko.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="luka">
+        <img class="carta-face" src="./testeIcon/luka.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="len">
+        <img class="carta-face" src="./testeIcon/len.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="rin">
+        <img class="carta-face" src="./testeIcon/rin.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="miku">
+        <img class="carta-face" src="./testeIcon/miku.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="kaito">
+        <img class="carta-face" src="./testeIcon/kaito.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="meiko">
+        <img class="carta-face" src="./testeIcon/meiko.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="luka">
+        <img class="carta-face" src="./testeIcon/luka.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="len">
+        <img class="carta-face" src="./testeIcon/len.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="rin">
+        <img class="carta-face" src="./testeIcon/rin.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="miku">
+        <img class="carta-face" src="./testeIcon/miku.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="kaito">
+        <img class="carta-face" src="./testeIcon/kaito.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="meiko">
+        <img class="carta-face" src="./testeIcon/meiko.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="luka">
+        <img class="carta-face" src="./testeIcon/luka.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="len">
+        <img class="carta-face" src="./testeIcon/len.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="rin">
+        <img class="carta-face" src="./testeIcon/rin.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="miku">
+        <img class="carta-face" src="./testeIcon/miku.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="kaito">
+        <img class="carta-face" src="./testeIcon/kaito.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="meiko">
+        <img class="carta-face" src="./testeIcon/meiko.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="luka">
+        <img class="carta-face" src="./testeIcon/luka.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="len">
+        <img class="carta-face" src="./testeIcon/len.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+      <div class="carta" data-card="rin">
+        <img class="carta-face" src="./testeIcon/rin.jpg" alt="Face da carta" />
+        <img class="carta-verso" src="./testeIcon/fundo.jpg" alt="Verso da carta" />
+      </div>
+    </main>
+    <div id="caixaFim">
+      <div id="divMensagem"></div>
+      <button onclick="iniciar()">Jogar novamente?</button>
+    </div>
+  </body>
+</html>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+  document.querySelector('.menuToggle').addEventListener('click', function() {
+      window.location.href = '../jogos.html';
+  });
+</script>
+<script>
+  const caixaInicio = document.querySelector("#caixaInicio");
+  const jogo = document.querySelector("#jogo");
+  const caixaFim = document.querySelector("#caixaFim");
+
+  const cards = document.querySelectorAll(".carta");
+  let virou = false;
+  let primeiraCarta, segundaCarta;
+  let trava = false;
+  let score = 0;
+  let time = 0;
+  let timeInterval;
+
+  jogo.style.display = "none";
+  caixaFim.style.display = "none";
+
+  //função para iniciar o jogo
+  function iniciar() {
+    score = 0;
+    time = 0;
+    
+    for (let card of cards) {
+      card.classList.remove("virar");
+    }
+
+    caixaInicio.style.display = "none";
+    jogo.style.display = "";
+    caixaFim.style.display = "none";
+
+    timeInterval = setInterval(() => time++, 10);
+  }
+
+  //função para virar carta
+  function virarCarta() {
+    if (trava) return;
+    if (this === primeiraCarta) return;
+
+    this.classList.add("virar");
+    if (!virou) {
+      virou = true;
+      primeiraCarta = this;
+      return;
+    }
+
+    segundaCarta = this;
+    virou = false;
+    checar();
+  }
+
+  //função que checa se as cartas são iguais
+  function checar() {
+    if (primeiraCarta.dataset.card === segundaCarta.dataset.card) {
+      score += 10;
+      desabilitarCarta();
+      return;
+    }
+
+    score--;
+    desvirar();
+  }
+
+  //função que desabilita as cartas
+  function desabilitarCarta() {
+    primeiraCarta.removeEventListener("click", virarCarta);
+    segundaCarta.removeEventListener("click", virarCarta);
+
+    resetar();
+  }
+
+  //funcão que desvira as cartas
+  function desvirar() {
+    trava = true;
+
+    setTimeout(() => {
+      primeiraCarta.classList.remove("virar");
+      segundaCarta.classList.remove("virar");
+
+      resetar();
+    }, 1500);
+  }
+
+  //função que reseta as cartas viradas
+  function resetar() {
+    [virou, trava] = [false, false];
+    [primeiraCarta, segundaCarta] = [null, null];
+
+    let cardsVirados = 0;
+    for (let card of cards) {
+      if (card.classList.contains("virar")) cardsVirados++;
+    }
+
+    if (cardsVirados == cards.length) {
+      clearInterval(timeInterval);
+
+      divMensagem.innerHTML = `<p>Pontuação: ${score} pontos!</p><p>Tempo: ${time / 100} segundos!</p>`;
+
+      jogo.style.display = "none";
+      caixaFim.style.display = "";
+
+      window.location.reload();
+      //lembrar de colocar um fetch aqui
+    }
+  }
+
+  //função que embaralha as cartas
+  (function embaralhar() {
+    cards.forEach((card) => {
+      let ramdomPosition = Math.floor(Math.random() * 12);
+      card.style.order = ramdomPosition;
+    });
+  })();
+
+  //adiciona evento de clique na carta
+  cards.forEach((card) => {
+    card.addEventListener("click", virarCarta);
+  });
+</script>

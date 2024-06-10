@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>39Talk</title>
+    <link rel="stylesheet" href="cadastrar.css">
+  <!-- <link rel="stylesheet" href="index.css"> -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <!-- <header>
+        <nav class="nav-bar">
+            <div class="logo">
+                <h1>39TALK</h1>
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="./index.css" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="./index.css" class="nav-link">Sobre</a></li>
+                    <li class="nav-item"><a href="./index.css" class="nav-link"> Vocaloids</a></li>
+                </ul>
+            </div>
+            <div class="login-button">
+                <button><a href="./cadastrar.html">Entrar</a></button>
+            </div>
+        </nav>
+        </div>
+    </header>
+     -->
+    <div class="container">
+        <div class="signin-signup">
+            <form action="" class="sign-in-form">
+                <h2 class="title">Login</h2> 
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Usuário" id="input_usuarioL">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Senha" id="input_senhaL">
+                </div>
+                <input onclick="entrar()" type="" value="Login" class="btn" id="input_submit">
+                
+                <p class="account-text">Não possui uma conta? <a href="#" id="sign-up-btn2">Cadastrar-se</a></p>
+            </form>
+
+            
+            <form action="" class="sign-up-form">
+                <h2 class="title-cadastrar">Cadastrar-se</h2>
+                <br><br>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Usuário" id="input_usuarioC">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email" id="input_email">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Senha" id="input_senhaC">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Confirme sua senha" id="input_confimarSenha">
+                </div>
+                <!-- <div class="input-field">
+                    <i class="fas fa-birthday-cake"></i>
+                    <input type="date" placeholder="Data de Nascimento" id="input_dataNasc">
+                </div> -->
+                <div class="input-field">
+                    <select id="slc_genero">
+                        <option value="" disabled selected>Selecione seu gênero</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                    </select>
+                </div>
+                <input onclick="cadastrar()" value="Cadastrar-se" class="btn">
+                <p class="social-text">Preencha as informações do seu perfil</p>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Nickname" id="input_nickname">
+                </div>
+                <div class="input-field">
+                    <select id="vocaFav">
+                        <option value="" disabled selected>Vocaloid favorito</option>
+                        <option value="1">Hatsune Miku</option>
+                        <option value="2">Kaito</option>
+                        <option value="3">Meiko</option>
+                        <option value="4">Luka</option>
+                        <option value="5">Len</option>
+                        <option value="6">Rin</option>
+                    </select>
+                </div>
+
+                <p class="account-text">Já possui uma conta? <a href="#" id="sign-in-btn2">Login</a></p>
+            </form>
+        </div>
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Já possui uma conta?</h3>
+                    <p>Clique aqui para fazer o seu login</p>
+                    <button class="btn" id="sign-in-btn" onclick="">Login</button>
+                </div>
+                <!-- <img alt="" class="image"> -->
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>Não possui uma conta?</h3>
+                    <p>Clique aqui para criar uma nova conta</p>
+                    <button class="btn" id="sign-up-btn" onclick="cadastrar()">Criar conta</button>
+                </div>
+                <!-- <img alt="" class="image"> -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+const sign_in_btn = document.querySelector("#sign-in-btn");
+const sign_up_btn = document.querySelector("#sign-up-btn");
+const container = document.querySelector(".container");
+const sign_in_btn2 = document.querySelector("#sign-in-btn2");
+const sign_up_btn2 = document.querySelector("#sign-up-btn2");
+sign_up_btn.addEventListener("click", () => {
+    container.classList.add("sign-up-mode");
+});
+sign_in_btn.addEventListener("click", () => {
+    container.classList.remove("sign-up-mode");
+});
+sign_up_btn2.addEventListener("click", () => {
+    container.classList.add("sign-up-mode2");
+});
+sign_in_btn2.addEventListener("click", () => {
+    container.classList.remove("sign-up-mode2");
+});
+</script>
+<script>
+    function cadastrar() {
+
+    // Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var usuarioVar = input_usuarioC.value;
+    var emailVar = input_email.value;
+    var senhaVar = input_senhaC.value;
+    // var confirmacaoSenhaVar = input_corfimarSenha.value;
+    // var nascVar = input_dataNasc.value;
+    var generoVar = slc_genero.value;
+    var vocaloidVar = vocaFav.value;
+
+    // if (
+    //   nomeVar == "" ||
+    //   emailVar == "" ||
+    //   senhaVar == "" ||
+    //   generoVar == "" ||
+    //   vocaloidVar == "" ||
+    //   comoVar == "" ||
+    //   oqueVar == "" 
+    // )
+console.log(usuarioVar, emailVar, senhaVar, vocaloidVar)
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: usuarioVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        generoServer: generoVar,
+        vocaloidServer: vocaloidVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("teste: " + resposta.ok)
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+          console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
+
+          setTimeout(() => {
+            window.location = "cadastrar.html";
+          }, "2000");
+
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+  }
+
+</script>
+<!-- <script src="js/sessao.jsc"></script> -->
+<script>
+    function entrar() {
+    // aguardar();
+
+    var emailVar = input_usuarioL.value;
+    var senhaVar = input_senhaL.value;
+
+    if (emailVar == "" || senhaVar == "") {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+    //   finalizarAguardar();
+      return false;
+    } else {
+    //   setInterval(sumirMensagem, 5000);
+    }
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!");
+
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then((json) => {
+            console.log("aaa" + json);
+            console.log(JSON.stringify(json));
+            sessionStorage.ID_USUARIO = json.idusuario;
+            sessionStorage.NOME_USUARIO = json.nome;
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.SENHA = JSON.stringify(json.senha);
+
+            setTimeout(function () {
+              window.location = "./dashboard/jogos.html";
+            }, 1000); // apenas para exibir o loading
+          });
+        } else {
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          resposta.text().then((texto) => {
+            console.error(texto);
+            // finalizarAguardar(texto);
+          });
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+      });
+
+    return false;
+  }
+</script>

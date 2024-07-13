@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>39Talk</title>
-    <link rel="stylesheet" href="cadastrar.css">
-  <!-- <link rel="stylesheet" href="index.css"> -->
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+    <link rel="stylesheet" href="cadastrar.css" />
+    <!-- <link rel="stylesheet" href="index.css"> -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
     <!-- <header>
         <nav class="nav-bar">
             <div class="logo">
@@ -29,154 +29,154 @@
     </header>
      -->
     <div class="container">
-        <div class="signin-signup">
-            <form action="" class="sign-in-form">
-                <h2 class="title">Login</h2> 
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Usuário" id="input_usuarioL">
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Senha" id="input_senhaL">
-                </div>
-                <button onclick="entrar()" type="" value="Login" class="btn" id="input_submit">Login</button>
-                
-                <p class="account-text">Não possui uma conta? <a href="#" id="sign-up-btn2">Cadastrar-se</a></p>
-            </form>
+      <div class="signin-signup">
+        <form action="" class="sign-in-form">
+          <h2 class="title">Login</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Usuário" id="input_usuarioL" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Senha" id="input_senhaL" />
+          </div>
+          <button onclick="entrar()" type="" value="Login" class="btn" id="input_submit">Login</button>
 
-            
-            <form action="" class="sign-up-form">
-                <h2 class="title-cadastrar">Cadastrar-se</h2>
-                <br><br>
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Usuário" id="input_usuarioC">
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Email" id="input_email">
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Senha" id="input_senhaC">
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Confirme sua senha" id="input_confimarSenha">
-                </div>
-                <!-- mundança do dia 03, mudança de posição já que o botão de cadastrar estava antes das informações -->
-                <p class="social-text">Preencha as informações do seu perfil</p>
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Nickname" id="input_nickname">
-                </div>
-                <!-- mundança do dia 03, mudança de posição das informações aniversario e genero-->
-                <div class="input-field">
-                  <i class="fas fa-birthday-cake"></i>
-                  <input type="date" placeholder="Data de Nascimento" id="input_dataNasc">
-              </div>
-              <div class="input-field">
-                  <select id="slc_genero">
-                      <option value="" disabled selected>Selecione seu gênero</option>
-                      <option value="masculino">Masculino</option>
-                      <option value="feminino">Feminino</option>
-                  </select>
-              </div>
-                <div class="input-field">
-                    <select id="vocaFav">
-                        <option value="" disabled selected>Vocaloid favorito</option>
-                        <option value="1">Hatsune Miku</option>
-                        <option value="2">Kaito</option>
-                        <option value="3">Meiko</option>
-                        <!-- mudança do dia 02, mudança nos nomes das opções -->
-                        <option value="4">Megurine Luka</option>
-                        <option value="5">Kagamine Len</option>
-                        <option value="6">Kagamine Rin</option>
-                    </select>
-                </div>
-                <div class="input-field">
-                  <select id="vocaFav">
-                      <option value="" disabled selected>Como conheceu VOCALOID?</option>
-                      <option value="1">Hatsune Miku</option>
-                      <option value="2">Kaito</option>
-                      <option value="3">Meiko</option>
-                      <!-- mudança do dia 02, mudança nos nomes das opções -->
-                      <option value="4">Megurine Luka</option>
-                      <option value="5">Kagamine Len</option>
-                      <option value="6">Kagamine Rin</option>
-                  </select>
-              </div>
-                <!-- mudança do dia 02, input -> button -->
-                <button onclick="cadastrar()" value="Cadastrar-se" class="btn">Cadastrar-se</button>
+          <p class="account-text">Não possui uma conta? <a href="#" id="sign-up-btn2">Cadastrar-se</a></p>
+        </form>
 
-                <p class="account-text">Já possui uma conta? <a href="#" id="sign-in-btn2">Login</a></p>
-            </form>
+        <form action="" class="sign-up-form">
+          <h2 class="title-cadastrar">Cadastrar-se</h2>
+          <br /><br />
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Usuário" id="input_usuarioC" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="Email" id="input_email" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Senha" id="input_senhaC" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Confirme sua senha" id="input_confimarSenha" />
+          </div>
+          <!-- mundança do dia 03, mudança de posição já que o botão de cadastrar estava antes das informações -->
+          <p class="social-text">Preencha as informações do seu perfil</p>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Nickname" id="input_nickname" />
+          </div>
+          <!-- mundança do dia 03, mudança de posição das informações aniversario e genero-->
+          <div class="input-field">
+            <i class="fas fa-birthday-cake"></i>
+            <input type="date" placeholder="Data de Nascimento" id="input_dataNasc" />
+          </div>
+          <div class="input-field">
+            <select id="slc_genero">
+              <option value="" disabled selected>Selecione seu gênero</option>
+              <option value="masculino">Masculino</option>
+              <option value="feminino">Feminino</option>
+            </select>
+          </div>
+          <div class="input-field">
+            <select id="vocaFav">
+              <option value="" disabled selected>Vocaloid favorito</option>
+              <option value="1">Hatsune Miku</option>
+              <option value="2">Kaito</option>
+              <option value="3">Meiko</option>
+              <!-- mudança do dia 02, mudança nos nomes das opções -->
+              <option value="4">Megurine Luka</option>
+              <option value="5">Kagamine Len</option>
+              <option value="6">Kagamine Rin</option>
+            </select>
+          </div>
+          <div class="input-field">
+            <select id="comoVar">
+              <option value="" disabled selected>Como conheceu VOCALOID?</option>
+              <option value="1">Amigos</option>
+              <option value="2">Internet</option>
+              <option value="3">Familiares</option>
+              <option value="4">Jogos</option>
+              <option value="5">Trabalho</option>
+              <option value="6">Outro</option>
+            </select>
+          </div>
+          <!-- mudança do dia 02, input -> button -->
+          <button onclick="cadastrar()" value="Cadastrar-se" class="btn">Cadastrar-se</button>
+
+          <p class="account-text">Já possui uma conta? <a href="#" id="sign-in-btn2">Login</a></p>
+        </form>
+      </div>
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>Já possui uma conta?</h3>
+            <p>Clique aqui para fazer o seu login</p>
+            <!-- mudança do dia 02, input -> button -->
+            <button class="btn" id="sign-in-btn" onclick="">Login</button>
+          </div>
+          <!-- <img alt="" class="image"> -->
         </div>
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <div class="content">
-                    <h3>Já possui uma conta?</h3>
-                    <p>Clique aqui para fazer o seu login</p>
-                <!-- mudança do dia 02, input -> button -->
-                    <button class="btn" id="sign-in-btn" onclick="">Login</button>
-                </div>
-                <!-- <img alt="" class="image"> -->
-            </div>
-            <div class="panel right-panel">
-                <div class="content">
-                    <h3>Não possui uma conta?</h3>
-                    <p>Clique aqui para criar uma nova conta</p>
-                    <button class="btn" id="sign-up-btn" onclick="cadastrar()">Criar conta</button>
-                </div>
-                <!-- <img alt="" class="image"> -->
-            </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>Não possui uma conta?</h3>
+            <p>Clique aqui para criar uma nova conta</p>
+            <button class="btn" id="sign-up-btn" onclick="cadastrar()">Criar conta</button>
+          </div>
+          <!-- <img alt="" class="image"> -->
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
+
+
 <script>
-const sign_in_btn = document.querySelector("#sign-in-btn");
-const sign_up_btn = document.querySelector("#sign-up-btn");
-const container = document.querySelector(".container");
-const sign_in_btn2 = document.querySelector("#sign-in-btn2");
-const sign_up_btn2 = document.querySelector("#sign-up-btn2");
-sign_up_btn.addEventListener("click", () => {
+  const sign_in_btn = document.querySelector("#sign-in-btn");
+  const sign_up_btn = document.querySelector("#sign-up-btn");
+  const container = document.querySelector(".container");
+  const sign_in_btn2 = document.querySelector("#sign-in-btn2");
+  const sign_up_btn2 = document.querySelector("#sign-up-btn2");
+  sign_up_btn.addEventListener("click", () => {
     container.classList.add("sign-up-mode");
-});
-sign_in_btn.addEventListener("click", () => {
+  });
+  sign_in_btn.addEventListener("click", () => {
     container.classList.remove("sign-up-mode");
-});
-sign_up_btn2.addEventListener("click", () => {
+  });
+  sign_up_btn2.addEventListener("click", () => {
     container.classList.add("sign-up-mode2");
-});
-sign_in_btn2.addEventListener("click", () => {
+  });
+  sign_in_btn2.addEventListener("click", () => {
     container.classList.remove("sign-up-mode2");
-});
+  });
 </script>
 <script>
-    function cadastrar() {
-
+  function cadastrar() {
     // Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var usuarioVar = input_usuarioC.value;
     var emailVar = input_email.value;
     var senhaVar = input_senhaC.value;
-    // var confirmacaoSenhaVar = input_corfimarSenha.value;
-    // var nascVar = input_dataNasc.value;
+    // alteração dia 11 - adição das variaveis para nascimento e como conheceu 
+    var confirmacaoSenhaVar = input_corfimarSenha.value;
+    var nascVar = input_dataNasc.value;
     var generoVar = slc_genero.value;
     var vocaloidVar = vocaFav.value;
-
-    // if (
-    //   nomeVar == "" ||
-    //   emailVar == "" ||
-    //   senhaVar == "" ||
-    //   generoVar == "" ||
-    //   vocaloidVar == "" ||
-    //   comoVar == "" ||
-    //   oqueVar == "" 
-    // )
-console.log(usuarioVar, emailVar, senhaVar, vocaloidVar)
+    var comoConheceuVar = comoVar.value;
+      // if (
+      //   nomeVar == "" ||
+      //   emailVar == "" ||
+      //   senhaVar == "" ||
+      //   generoVar == "" ||
+      //   vocaloidVar == "" ||
+      //   comoVar == "" ||
+      //   oqueVar == ""
+      // )
+      console.log(usuarioVar, emailVar, senhaVar, vocaloidVar);
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -194,17 +194,15 @@ console.log(usuarioVar, emailVar, senhaVar, vocaloidVar)
       }),
     })
       .then(function (resposta) {
-        console.log("teste: " + resposta.ok)
+        console.log("teste: " + resposta.ok);
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-
-          console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
+          console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
           setTimeout(() => {
             window.location = "cadastrar.html";
           }, "2000");
-
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
@@ -215,11 +213,10 @@ console.log(usuarioVar, emailVar, senhaVar, vocaloidVar)
 
     return false;
   }
-
 </script>
 <!-- <script src="js/sessao.jsc"></script> -->
 <script>
-    function entrar() {
+  function entrar() {
     // aguardar();
 
     var emailVar = input_usuarioL.value;
@@ -228,10 +225,10 @@ console.log(usuarioVar, emailVar, senhaVar, vocaloidVar)
     if (emailVar == "" || senhaVar == "") {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-    //   finalizarAguardar();
+      //   finalizarAguardar();
       return false;
     } else {
-    //   setInterval(sumirMensagem, 5000);
+      //   setInterval(sumirMensagem, 5000);
     }
 
     console.log("FORM LOGIN: ", emailVar);

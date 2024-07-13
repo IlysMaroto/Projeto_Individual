@@ -1,15 +1,27 @@
+<!-- criação do dia 4, adição da pagina do post -->
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="teste.css" />
-  </head>
-  <body>
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>39Talk | Post</title>
+
+<link rel="stylesheet" href="./../css/navbarSidebar.css">
+
+    <script src="../js/sessao.js"></script>
+    <script src="../js/alerta.js"></script>
+    <link rel="stylesheet" href="../css/card.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+<!-- Adição da navbar -->
+<body>
     <div class="menuToggle"></div>
     <div class="sidebar">
       <ul>
+        <!-- não adicionarei essa parte do codigo pois não há diferença das outras paginas -->
         <li class="logo" style="--bg: #33CCBA;">
           <a href="#">
             <div class="icon"><ion-icon name="wifi-outline"></ion-icon></div>
@@ -18,13 +30,13 @@
         </li>
         <div class="Menulist">
           <li style="--bg:  #3367CD  ;" class="active">
-            <a href="#">
+            <a href="./home.html">
               <div class="icon"><ion-icon name="home-outline"></ion-icon></div>
               <div class="text">Home</div>
             </a>
           </li>
           <li style="--bg:  #DE4444  ;">
-            <a href="#">
+            <a href="./perfil.html">
               <div class="icon">
                 <ion-icon name="person-outline"></ion-icon>
               </div>
@@ -32,15 +44,23 @@
             </a>
           </li>
           <li style="--bg:#fdc600 ;">
-            <a href="#">
+            <a href="./chat.html">
               <div class="icon">
                 <ion-icon name="chatbox-outline"></ion-icon>
               </div>
               <div class="text">Chat</div>
             </a>
           </li>
+          <li style="--bg:#fdc600 ;">
+            <a href="./post.html">
+              <div class="icon">
+                <ion-icon name="chatbox-outline"></ion-icon>
+              </div>
+              <div class="text">Posts</div>
+            </a>
+          </li>
           <li style="--bg:  #FFEE12;">
-            <a href="#">
+            <a href="./jogos.html">
               <div class="icon">
                 <ion-icon name="game-controller-outline"></ion-icon>
               </div>
@@ -48,7 +68,7 @@
             </a>
           </li>
           <li style="--bg: #FFBACC  ;">
-            <a href="#">
+            <a href="./graficos.html">
               <div class="icon">
                 <ion-icon name="bar-chart-outline"></ion-icon>
               </div>
@@ -70,7 +90,7 @@
             </a>
           </li>
           <li style="--bg: #333;">
-            <a href="#">
+            <a href="../index.html">
               <div class="icon">
                 <ion-icon name="log-out-outline"></ion-icon>
               </div>
@@ -80,6 +100,10 @@
         </div>
       </ul>
     </div>
+  </div>
+
+</body>
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -107,5 +131,4 @@
       item.addEventListener('click',activeLink));
    
 </script>
-  </body>
 </html>

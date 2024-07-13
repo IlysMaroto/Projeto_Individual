@@ -51,7 +51,7 @@ form {
     width: 40%;
     flex-wrap: wrap;
     flex-direction: row;
-    gap: 10px;
+    /* gap: 10px; */
     min-width: 238px;
     padding: 0 10px;
 }
@@ -89,16 +89,17 @@ form.sign-up-form {
     border-radius: 30px;
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 .input-field select {
     appearance: none; /* Remove o estilo padrão do navegador */
     -webkit-appearance: none; /* Para navegadores baseados em WebKit */
     -moz-appearance: none; /* Para Firefox */
-    width: 100%; /* Torna o select responsivo */
+    /* width: 100%; Torna o select responsivo */
     height: 40px; /* Define a altura do select */
     padding: 0 10px; /* Adiciona algum preenchimento para melhorar a usabilidade */
-    border: 2px solid #5CE1E6; /* Bordas consistentes com outros inputs */
+    border: none; /* Bordas consistentes com outros inputs */
     border-radius: 25px; /* Arredonda as bordas */
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23ffffff" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>') no-repeat right 10px center; /* Adiciona um ícone de seta para indicar que é um dropdown */
     background-size: 12px; /* Tamanho do ícone de seta */

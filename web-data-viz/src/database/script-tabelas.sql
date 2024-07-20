@@ -1,30 +1,32 @@
--- NOME: ILYS GOMES MAROTO
--- RA: 04241067
--- CRIAÇÃO DO BANCO DE DADOS PARA O PROJETO INDIVIDUAL
+-- nome: ilys gomes maroto
+-- ra: 04241067
+-- criação do banco de dados para o projeto individual
 
-DROP DATABASE IF EXISTS 39TALK;
-CREATE DATABASE 39TALK;
-USE 39TALK;
+-- [...]
+drop database if exists 39talk;
+create database 39talk;
+use 39talk;
 
-CREATE TABLE VOCALOID (
-IDVOCALOID INT PRIMARY KEY auto_increment,
-NOME VARCHAR(256)
+create table vocaloid (
+idvocaloid int primary key auto_increment,
+nome varchar(256)
 );
 
-INSERT INTO VOCALOID (NOME) VALUES
-('Hatsune Miku'),
-('Kaito'),
-('Meiko'),
-('Megurine Luka'),
-('Kagamine Len'),
-('Kagamine Rin');
+insert into vocaloid (nome) values
+('hatsune miku'),
+('kaito'),
+('meiko'),
+('megurine luka'),
+('kagamine len'),
+('kagamine rin');
 
-CREATE TABLE IMAGEMPERFIL (
-IDIMAGEMPERFIL INT PRIMARY KEY auto_increment,
-IMAGEM VARCHAR(256)
+create table imagemperfil (
+idimagemperfil int primary key auto_increment,
+imagem varchar(256)
 ); 
+-- [...]
 
-INSERT INTO IMAGEMPERFIL (IMAGEM) VALUES
+insert into imagemperfil (imagem) values
 ('../assets/icon/mikuicon.jpg'),
 ('../assets/icon/kaitoicon.jpg'),
 ('../assets/icon/meikoicon.jpg'),
@@ -32,84 +34,100 @@ INSERT INTO IMAGEMPERFIL (IMAGEM) VALUES
 ('../assets/icon/lenicon.jpg'),
 ('../assets/icon/rinicon.jpg');
 
-CREATE TABLE GENERO(
-IDGENERO INT PRIMARY KEY AUTO_INCREMENT,
-GENERO VARCHAR(256)
+create table genero(
+idgenero int primary key auto_increment,
+genero varchar(256)
 );
 
-CREATE TABLE CONHECIMENTO(
-IDCONHECIMENTO INT PRIMARY KEY AUTO_INCREMENT,
-COMO VARCHAR(256)
+insert into genero(genero) values
+('masculino'),
+('feminino');
+
+create table conhecimento(
+idconhecimento int primary key auto_increment,
+como varchar(256)
 );
 
-CREATE TABLE ATUACAO(
-IDATUACAO INT PRIMARY KEY AUTO_INCREMENT,
-ATUACAO VARCHAR(256)
+insert into conhecimento(como) values
+('amigos'),
+('internet'),
+('familiares'),
+('jogos'),
+('trabalho'),
+('outro');
+
+create table atuacao(
+idatuacao int primary key auto_increment,
+atuacao varchar(256)
 );
 
-CREATE TABLE USUARIO(
-IDUSUARIO INT PRIMARY KEY AUTO_INCREMENT,
-NOME VARCHAR(256),
-EMAIL VARCHAR(256) UNIQUE,
-SENHA VARCHAR(256),
-NASC DATE,
-FKATUACAO INT,
-FKCONHECIMENTO INT,
-FKGENERO INT,
+create table usuario(
+idusuario int primary key auto_increment,
+nome varchar(256),
+email varchar(256) unique,
+senha varchar(256),
+nasc date,
+fkatuacao int,
+fkconhecimento int,
+fkgenero int,
 
-FOREIGN KEY (FKATUACAO) REFERENCES ATUACAO(IDATUACAO),
-FOREIGN KEY (FKCONHECIMENTO) REFERENCES CONHECIMENTO(IDCONHECIMENTO),
-FOREIGN KEY (FKGENERO) REFERENCES GENERO(IDGENERO)
+foreign key (fkatuacao) references atuacao(idatuacao),
+foreign key (fkconhecimento) references conhecimento(idconhecimento),
+foreign key (fkgenero) references genero(idgenero)
 );
 
-CREATE TABLE JOGO(
-IDJOGO INT PRIMARY KEY AUTO_INCREMENT,
-NOME VARCHAR(256)
+insert into usuario (nome, email, senha, nasc, fkatuacao, fkconhecimento, fkgenero) values
+('teste', 'teste', 'teste', '2020-01-01', null, 1, 1);
+select * from usuario;
+
+create table jogo(
+idjogo int primary key auto_increment,
+nome varchar(256)
 );
 
-CREATE TABLE PONTUACAO (
-IDPONTUACAO INT AUTO_INCREMENT,
-FKJOGO INT,
-FKUSUARIO INT,
-PONTUACAO INT,
-VEZESJOGADAS INT,
+create table pontuacao (
+idpontuacao int auto_increment,
+fkjogo int,
+fkusuario int,
+pontuacao int,
+vezesjogadas int,
 
-PRIMARY KEY (IDPONTUACAO, FKJOGO, FKUSUARIO),
-FOREIGN KEY (FKJOGO) REFERENCES JOGO(IDJOGO),
-FOREIGN KEY (FKUSUARIO) REFERENCES USUARIO(IDUSUARIO)
+primary key (idpontuacao, fkjogo, fkusuario),
+foreign key (fkjogo) references jogo(idjogo),
+foreign key (fkusuario) references usuario(idusuario)
 );
 
-CREATE TABLE PERFIL (
-IDPERFIL INT AUTO_INCREMENT,
-APELIDO VARCHAR(256),
-FKUSUARIO INT,
-FKIMAGEM INT,
-FKVOCALOID INT,
+create table perfil (
+idperfil int auto_increment,
+apelido varchar(256),
+fkusuario int,
+fkimagem int,
+fkvocaloid int,
 
-PRIMARY KEY (IDPERFIL, FKUSUARIO),
-FOREIGN KEY (FKUSUARIO) REFERENCES USUARIO(IDUSUARIO),
-FOREIGN KEY (FKIMAGEM) REFERENCES IMAGEMPERFIL(IDIMAGEMPERFIL),
-FOREIGN KEY (FKVOCALOID) REFERENCES VOCALOID(IDVOCALOID)
+primary key (idperfil, fkusuario),
+foreign key (fkusuario) references usuario(idusuario),
+foreign key (fkimagem) references imagemperfil(idimagemperfil),
+foreign key (fkvocaloid) references vocaloid(idvocaloid)
 );
 
-CREATE TABLE MENSAGEM(
-IDMENSAGEM INT AUTO_INCREMENT,
-MENSAGEM VARCHAR(256),
-DATAHORA DATETIME,
-FKUSUARIO INT,
+create table mensagem(
+idmensagem int auto_increment,
+mensagem varchar(256),
+datahora datetime,
+fkusuario int,
 
-PRIMARY KEY (IDMENSAGEM, FKUSUARIO),
-FOREIGN KEY (FKUSUARIO) REFERENCES USUARIO(IDUSUARIO)
+primary key (idmensagem, fkusuario),
+foreign key (fkusuario) references usuario(idusuario)
 );
 
-CREATE TABLE POST(
-IDPOST INT,
-TITULO VARCHAR(256),
-TEXTO VARCHAR(256),
-IMAGEM VARCHAR(256),
-DATAHORA DATETIME,
-FKUSUARIO INT,
+create table post(
+idpost int,
+titulo varchar(256),
+texto varchar(256),
+imagem varchar(256),
+datahora datetime,
+fkusuario int,
 
-PRIMARY KEY (IDPOST, FKUSUARIO),
-FOREIGN KEY (FKUSUARIO) REFERENCES USUARIO(IDUSUARIO)
+primary key (idpost, fkusuario),
+foreign key (fkusuario) references usuario(idusuario)
 );

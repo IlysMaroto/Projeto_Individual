@@ -1,7 +1,7 @@
 var database = require("../database/config")
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
-function cadastrar(nome, email, senha, genero, vocaloid) {
+function cadastrar(nome, email, senha, nasc, fkconhecimento, fkgenero, vocaloid) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
     
     // são 2 inserts
@@ -13,7 +13,7 @@ function cadastrar(nome, email, senha, genero, vocaloid) {
     console.log("LALAL")
 
     var instrucaoSql = `
-        INSERT INTO USUARIO (NOME, EMAIL, SENHA, GENERO, FKVOCALOID, FKIMAGEM) VALUES ('${nome}', '${email}', '${senha}', '${genero}', '${vocaloid}', null);
+        INSERT INTO USUARIO (nome, email, senha, nasc, fkatuacao, fkconhecimento, fkgenero) VALUES ('${nome}', '${email}', '${senha}', '${nasc}', null, '${fkconhecimento}', '${fkgenero}');
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

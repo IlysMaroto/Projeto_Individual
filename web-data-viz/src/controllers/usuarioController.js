@@ -2,12 +2,16 @@ var usuarioModel = require("../models/usuarioModel");
 
 function cadastrar(req, res) {
   // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+  console.log(req.body)
   var nome = req.body.nomeServer;
   var email = req.body.emailServer;
   var senha = req.body.senhaServer;
-  var genero = req.body.generoServer;
+  var nasc = req.body.nascServer;
+  // var fkatuacao = req.body.fkatuacaoServer;
+  var fkconhecimento = req.body.fkconhecimentoServer;
+  var fkgenero = req.body.fkgeneroServer;
   var vocaloid = req.body.vocaloidServer;
-  console.log(nome, email, senha, genero, vocaloid);
+  console.log(nome, email, senha, nasc, fkconhecimento, fkgenero, vocaloid);
 
   // Faça as validações dos valores
   if (nome == undefined) {
@@ -16,14 +20,18 @@ function cadastrar(req, res) {
     res.status(400).send("Seu email está undefined!");
   } else if (senha == undefined) {
     res.status(400).send("Sua senha está undefined!");
-  } else if (genero == undefined) {
+  } else if (nasc == undefined) {
+    res.status(400).send("Sua nasc está undefined!");
+  } else if (fkconhecimento == undefined) {
+    res.status(400).send("Sua conhecimento está undefined!");
+  } else if (fkgenero == undefined) {
     res.status(400).send("Seu genero está undefined!");
   } else if (vocaloid == undefined) {
     res.status(400).send("Seu vocaloid está undefined!");
   } else {
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
     usuarioModel
-      .cadastrar(nome, email, senha, genero, vocaloid)
+      .cadastrar(nome, email, senha, nasc, fkconhecimento, fkgenero, vocaloid)
       .then(function (resultado) {
         res.json(resultado);
       })

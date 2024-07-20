@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+    font-family: 'Montserrat', sans-serif; /* Mudança de fonte para Montserrat */
+  }
 body {
     display: flex;
     align-items: center;
@@ -76,10 +76,11 @@ form.sign-up-form {
 }
 .title-cadastrar {
     font-size: 25px;
-    padding: 25px;
+    padding: 20px;
     color: #5CE1E6;
     margin-bottom: 10px;
-}
+  }
+
 .input-field {
     width: calc(50% - 20px);
     height: 40px;
@@ -91,6 +92,17 @@ form.sign-up-form {
     align-items: center;
     overflow: hidden;
 }
+
+.input-field input[type="text"],.input-field input[type="email"] {
+    width: 100%; /* Mudança para que os inputs de usuário e email tenham o mesmo tamanho */
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #444;
+  }
 
 .input-field select {
     appearance: none; /* Remove o estilo padrão do navegador */
@@ -280,3 +292,4 @@ a {
         width: 90%;
     }
 }
+

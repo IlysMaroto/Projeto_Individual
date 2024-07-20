@@ -30,11 +30,11 @@
      -->
     <div class="container">
       <div class="signin-signup">
-        <form action="" class="sign-in-form">
+        <form onsubmit="submitForm(event)" action="" class="sign-in-form">
           <h2 class="title">Login</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Usuário" id="input_usuarioL" />
+            <input type="text" placeholder="Nome" id="input_usuarioL" />
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
@@ -45,7 +45,7 @@
           <p class="account-text">Não possui uma conta? <a href="#" id="sign-up-btn2">Cadastrar-se</a></p>
         </form>
 
-        <form action="" class="sign-up-form">
+        <form onsubmit="submitForm(event)" action="" class="sign-up-form">
           <h2 class="title-cadastrar">Cadastrar-se</h2>
           <br /><br />
           <div class="input-field">
@@ -78,8 +78,8 @@
           <div class="input-field">
             <select id="slc_genero">
               <option value="" disabled selected>Selecione seu gênero</option>
-              <option value="masculino">Masculino</option>
-              <option value="feminino">Feminino</option>
+              <option value="1">Masculino</option>
+              <option value="2">Feminino</option>
             </select>
           </div>
           <div class="input-field">
@@ -134,7 +134,7 @@
   </body>
 </html>
 
-
+<!-- Animação da pagina-->
 <script>
   const sign_in_btn = document.querySelector("#sign-in-btn");
   const sign_up_btn = document.querySelector("#sign-up-btn");
@@ -154,30 +154,29 @@
     container.classList.remove("sign-up-mode2");
   });
 </script>
+
+<!-- Cadastro -->
 <script>
+  function submitForm(event) {
+    event.preventDefault();
+  }
+
   function cadastrar() {
     // Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var usuarioVar = input_usuarioC.value;
     var emailVar = input_email.value;
     var senhaVar = input_senhaC.value;
-    // alteração dia 11 - adição das variaveis para nascimento e como conheceu 
-    var confirmacaoSenhaVar = input_corfimarSenha.value;
+    // alteração dia 11 - adição das variaveis para nascimento e como conheceu
+    var confirmacaoSenhaVar = input_confimarSenha.value;
     var nascVar = input_dataNasc.value;
     var generoVar = slc_genero.value;
     var vocaloidVar = vocaFav.value;
     var comoConheceuVar = comoVar.value;
-      // if (
-      //   nomeVar == "" ||
-      //   emailVar == "" ||
-      //   senhaVar == "" ||
-      //   generoVar == "" ||
-      //   vocaloidVar == "" ||
-      //   comoVar == "" ||
-      //   oqueVar == ""
-      // )
-      console.log(usuarioVar, emailVar, senhaVar, vocaloidVar);
+    if (usuarioVar === "" || emailVar === "" || senhaVar === "" || nascVar === "" || generoVar === "" || vocaloidVar === "" || comoConheceuVar === "") return false;
+    console.log(usuarioVar, emailVar, senhaVar, confirmacaoSenhaVar, nascVar, generoVar, vocaloidVar, comoConheceuVar);
     // Enviando o valor da nova input
+    if (senhaVar !== confirmacaoSenhaVar) return false;
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
@@ -189,12 +188,13 @@
         nomeServer: usuarioVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        generoServer: generoVar,
+        nascServer: nascVar,
+        fkconhecimentoServer: comoConheceuVar,
+        fkgeneroServer: generoVar,
         vocaloidServer: vocaloidVar,
       }),
     })
       .then(function (resposta) {
-        console.log("teste: " + resposta.ok);
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
@@ -204,17 +204,22 @@
             window.location = "cadastrar.html";
           }, "2000");
         } else {
+          resposta.text().then((text) => {
+          console.log(text);
+        });
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
+       
       });
 
     return false;
   }
 </script>
 <!-- <script src="js/sessao.jsc"></script> -->
+<!-- Entrar no site -->
 <script>
   function entrar() {
     // aguardar();

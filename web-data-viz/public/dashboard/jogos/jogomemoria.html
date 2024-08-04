@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../css/jogomemoria.css" />
     <title>Jogo da memória</title>
+    <script src="../js/sessao.js"></script>
   </head>
   <body>
     <div class="menuToggle">
@@ -128,6 +129,7 @@
   });
 </script>
 <script>
+  const idUser = sessionStorage.getItem("ID_USUARIO")
   const caixaInicio = document.querySelector("#caixaInicio");
   const jogo = document.querySelector("#jogo");
   const caixaFim = document.querySelector("#caixaFim");
@@ -220,15 +222,49 @@
 
     if (cardsVirados == cards.length) {
       clearInterval(timeInterval);
-
+      tempo = time / 100;
       divMensagem.innerHTML = `<p>Pontuação: ${score} pontos!</p><p>Tempo: ${time / 100} segundos!</p>`;
-
+      tempo = secondsToTime(tempo)
+      alert(tempo)
+      salvarJogo()
       jogo.style.display = "none";
       caixaFim.style.display = "";
 
       window.location.reload();
       //lembrar de colocar um fetch aqui
     }
+  }
+
+  function salvarJogo(){
+    var fkjogo = 2; 
+    fetch("/jogo/salvarMemoria", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+
+          fkJogoServer: fkjogo,
+          fkUsuarioServer: idUser,
+          pontuacaoServer: score,
+          tempoJogadoServer: tempo,
+      }),
+  })
+      .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            console.log('Mensagem salva no banco!')
+            exibirPosts()
+          } else {
+              throw "Houve um erro ao tentar realizar o post!";
+          }
+      })
+      .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+      });
   }
 
   //função que embaralha as cartas
@@ -243,4 +279,19 @@
   cards.forEach((card) => {
     card.addEventListener("click", virarCarta);
   });
+
+  function secondsToTime(seconds) {
+    // Calcula as horas, minutos e segundos
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+  
+    // Formata com dois dígitos
+    const formattedHours = String(hours).padStart(2, '0');
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(secs).padStart(2, '0');
+  
+    // Retorna o formato HH:MM:SS
+    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+  }
 </script>

@@ -13,11 +13,11 @@
 
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
-    <link rel="stylesheet" href="../css/card.css">
+    <link rel="stylesheet" href="../testes/post.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 <!-- Adição da navbar -->
-<body>
+<body onload="exibirPosts(), carregarSessao()">
   <div class="menuToggle"></div>
   <div class="sidebar">
     <ul>
@@ -81,11 +81,12 @@
             <div class="icon">
               <div class="imgBx">
                 <img
+                  id="imgUsuarioSessao"
                   src="https://icons.veryicon.com/png/o/miscellaneous/merchant-pc20/system-settings-9999-20px.png"
                 />
               </div>
             </div>
-            <div class="text">Nome Usuario</div>
+            <div class="text" id="apelidoUsuarioSessao"></div>
           </a>
         </li>
         <li style="--bg: #333;">
@@ -99,10 +100,188 @@
       </div>
     </ul>
   </div>
-  <!-- </div> -->
+  <div class="centralizar"> 
+    <main class="main">
+      <!-- Formulário de postagem -->
+      <div class="newPost">
+        <div class="infoUser">
+          <div class="imgUser" id="fotoUser">
+            <img id="imgMeuUsuario" alt="">
+          </div>
+          <strong id="nomeUser"></strong>
+        </div>
+
+        <form action="" class="formPost" id="formPost">
+          <select name="tema" id="themePost">
+            <option value="" disabled selected>Tema do post?</option>
+            <option value="VOCALOID">Vocaloid</option>
+            <option value="MUSICA">Músicas</option>
+            <option value="CRYPTON">Crypton Future Media</option>
+            <option value="MIKU">Hatsune Miku</option>
+            <option value="KAITO">Kaito</option>
+            <option value="MEIKO">Meiko</option>
+            <option value="LUKA">Megurine Luka</option>
+            <option value="LEN">Kagamine Len</option>
+            <option value="RIN">Kagamine Rin</option>
+            <option value="PROSEKAI">Project Sekai</option>
+            <option value="OUTROS">Outros</option>
+          </select>
+          <textarea name="textarea" placeholder="Qual será o título?" id="titlearea" class="titulo"></textarea>
+          <textarea name="textarea" placeholder="O que você quer compartilhar?" id="textarea"></textarea>
+          <div class="iconsAndButton">
+            <button onclick="enviar()" id="botao" class="btnSubmitForm">Publicar</button>
+          </div>
+        </form>
+      </div>
+
+      <ul class="posts" id="posts"></ul>
+  </div>
 
 </body>
 
+<script>
+  function enviar(){
+    
+    var tema = themePost.value;
+    var titulo = titlearea.value;
+    var texto =  textarea.value;
+    var fkUsuario = sessionStorage.ID_USUARIO;
+
+    fetch("/post/enviar", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+
+          temaServer: tema,
+          tituloServer: titulo,
+          textoServer: texto,
+          fkUsuarioServer: fkUsuario,
+      }),
+  })
+      .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            console.log('Mensagem salva no banco!')
+            exibirPosts()
+          } else {
+              throw "Houve um erro ao tentar realizar o post!";
+          }
+      })
+      .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+      });
+
+  }
+
+  function exibirPosts(){
+    const idUser = sessionStorage.getItem("ID_USUARIO")
+    fetch("/perfil/verificar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        iduserServer: idUser
+      }),
+    })
+      .then(function (resposta) {
+        
+        resposta.json().then(function (resposta) {
+          console.log("resposta: ", resposta);
+          console.log("Dados recebidos: ", JSON.stringify(resposta));
+          perfil = resposta[0]
+          imgMeuUsuario.setAttribute("src", perfil.imagem);
+          nomeUser.innerHTML = `${perfil.apelido}`
+        })
+      })
+      .catch(function (resposta) {''
+        console.log(`#ERRO: ${resposta}`);
+       
+      });
+
+
+
+
+    fetch("/post/listarPosts")
+    .then(function (resposta) {
+      if (resposta.ok) {
+        if (resposta.status == 204) {
+          console.log('Nenhum resultado encontrado!!');
+          throw "Nenhum resultado encontrado!!";
+        }
+
+        resposta.json().then(function (resposta) {
+          console.log("Dados recebidos: ", JSON.stringify(resposta));
+          var ContadorAuxiliar = 0;
+
+          for (let i = 0; i < resposta.length; i++) {
+            var post = resposta[i];
+              var tempo = post.datahora;
+              ContadorAuxiliar++;
+              var time = getTime(tempo); 
+              posts.innerHTML += `
+      <li class="post">
+        <div class="infoUserPost">
+          <div class="imgUserPost">
+            <img src="${post.imagem}" style="width: 100%; border-radius: 100%;" alt="">
+          </div>
+    
+          <div class="nameAndHour">
+            <strong id="nameUser">${post.apelido}</strong>
+            <p>${time}</p>
+          </div>
+        </div>
+    
+        <div class="contentPost-all">
+        
+         <div class="contentPost-title">
+          <h1>
+         ${post.titulo}
+         </h1>    
+          </div>
+    
+        <div class="contentPost-text">
+         <p>
+         ${post.texto}
+         </p>
+        </div>
+        
+        <div class="contentPost-theme">
+         <h3>
+         ${post.tema}
+         </h3>
+        </div>
+        
+        </div>
+        </div>
+      </li>
+        `;
+          }
+          
+
+        });
+      } else {
+        throw "Houve um erro na API!";
+      }
+    })
+    .catch(function (resposta) {
+      console.error(resposta);
+    });
+  }
+  function getTime(tempo) {
+    const time = new Date(tempo);  // Cria um objeto Date a partir da string de entrada
+    const hour = time.getUTCHours();  // Obtém as horas no fuso horário UTC
+    const minutes = time.getUTCMinutes();  // Obtém os minutos no fuso horário UTC
+    return `${hour}h ${minutes}min`;
+  }
+  
+</script>
+<!-- script para os icons da navbar-->
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -112,22 +291,111 @@
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
 
-<script>
-    let menuToggle = document.querySelector('.menuToggle');
-    let sidebar = document.querySelector('.sidebar');
-    menuToggle.onclick = function(){
-        menuToggle.classList.toggle('active');
-        sidebar.classList.toggle('active');
+    <!-- script para a animação da navbar -->
+    <script>
+      let menuToggle = document.querySelector('.menuToggle');
+      let sidebar = document.querySelector('.sidebar');
+      menuToggle.onclick = function(){
+          menuToggle.classList.toggle('active');
+          sidebar.classList.toggle('active');
+      }
+  
+      let Menulist = document.querySelectorAll('.Menulist li');
+      function activeLink(){
+        Menulist.forEach((item) =>
+      item.classList.remove('active'));
+      this.classList.add('active')
+   }
+        Menulist.forEach((item) =>
+        item.addEventListener('click',activeLink));
+     
+  </script>
+</html>
+<script type="module">/*
+export class FormPost {
+    constructor(idForm, idThemePost, idTitlearea, idTextarea, ListPost) {
+      this.form = document.getElementById(idForm);
+      this.theme = document.getElementById(idThemePost);
+      this.titlearea = document.getElementById(idTitlearea);
+      this.textarea = document.getElementById(idTextarea);
+      this.listPost = document.getElementById(ListPost);
+      this.addSubmit();
     }
 
-    let Menulist = document.querySelectorAll('.Menulist li');
-    function activeLink(){
-      Menulist.forEach((item) =>
-    item.classList.remove('active'));
-    this.classList.add('active')
- }
-      Menulist.forEach((item) =>
-      item.addEventListener('click',activeLink));
-   
+    formValidate(value) {
+      if (value === "" || value === null || value === undefined || value.length < 1 || value.length > 256) {
+        return false;
+      }
+      return true;
+    }
+
+    onSubmit(func) {
+      this.form.addEventListener("submit", func);
+    }
+
+    addSubmit() {
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        if (this.formValidate(this.textarea.value || this.titlearea.value || this.theme.value)) {
+          // fetch().then().catch();
+          const newPost = document.createElement("li");
+          newPost.classList.add("post");
+          const time = this.getTime();
+          newPost.innerHTML = `
+    <div class="infoUserPost">
+      <div class="imgUserPost"></div>
+
+      <div class="nameAndHour">
+        <strong id="nameUser"></strong>
+        <p>${time}</p>
+      </div>
+    </div>
+
+    <div class="contentPost-all">
+    
+     <div class="contentPost-title">
+      <h1>
+     ${this.titlearea.value}
+     </h1>    
+      </div>
+
+    <div class="contentPost-text">
+     <p>
+     ${this.textarea.value}
+     </p>
+    </div>
+    
+    <div class="contentPost-theme">
+     <h3>
+     ${this.theme.value}
+     </h3>
+    </div>
+    
+    </div>
+    </div>
+    
+    `;
+          this.listPost.appendChild(newPost);
+          this.textarea.value = "";
+        } else if (this.textarea.value.length < 1) {
+          alert("Escreva algo antes de enviar seu post!");
+        }  else if (this.textarea.value.length > 256) {
+          alert(`Você passou do limite de 256 caracteres! (${this.textarea.value.length})`);
+        } 
+      };
+
+      this.onSubmit(handleSubmit);
+    }
+
+    getTime() {
+      const time = new Date();
+      const hour = time.getHours();
+      const minutes = time.getMinutes();
+      return `${hour}h ${minutes}min`;
+    }
+  }
+
+  const postForm = new FormPost("formPost","themePost", "titlearea", "textarea", "posts");
+
+*/
 </script>
-</html>

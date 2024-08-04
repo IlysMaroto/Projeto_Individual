@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<body>
+<body onload="carregarSessao()">
   <div class="menuToggle"></div>
   <div class="sidebar">
     <ul>
@@ -81,11 +81,12 @@
             <div class="icon">
               <div class="imgBx">
                 <img
+                  id="imgUsuarioSessao"
                   src="https://icons.veryicon.com/png/o/miscellaneous/merchant-pc20/system-settings-9999-20px.png"
                 />
               </div>
             </div>
-            <div class="text">Nome Usuario</div>
+            <div class="text" id="apelidoUsuarioSessao"></div>
           </a>
         </li>
         <li style="--bg: #333;">
@@ -100,6 +101,9 @@
     </ul>
   </div>
   <!-- </div> -->
+  <div class="centralizar">
+    
+  </div>
 
 </body>
 

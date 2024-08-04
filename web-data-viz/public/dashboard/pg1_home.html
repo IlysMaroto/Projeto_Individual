@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>39Talk | Home</title>
 
-<link rel="stylesheet" href="./../css/navbarSidebar.css">
+    <link rel="stylesheet" href="./../css/navbarSidebar.css" />
 
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
-    <link rel="stylesheet" href="../css/card.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-</head>
+    <link rel="stylesheet" href="../testes/card2.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+  </head>
 
-<body>
+  <body onload="carregarSessao()">
     <div class="menuToggle"></div>
     <div class="sidebar">
       <ul>
-        <li class="logo" style="--bg: #33CCBA;">
+        <li class="logo" style="--bg: #33ccba">
           <a href="#">
             <div class="icon"><ion-icon name="wifi-outline"></ion-icon></div>
             <div class="text">39Talk</div>
           </a>
         </li>
         <div class="Menulist">
-          <li style="--bg:  #3367CD  ;" class="active">
+          <li style="--bg: #3367cd" class="active">
             <a href="./pg1_home.html">
               <div class="icon"><ion-icon name="home-outline"></ion-icon></div>
               <div class="text">Home</div>
             </a>
           </li>
-          <li style="--bg:  #DE4444  ;">
+          <li style="--bg: #de4444">
             <a href="./pg2_perfil.html">
               <div class="icon">
                 <ion-icon name="person-outline"></ion-icon>
@@ -41,7 +40,7 @@
               <div class="text">Perfil</div>
             </a>
           </li>
-          <li style="--bg:#fdc600 ;">
+          <li style="--bg: #fdc600">
             <a href="./pg3_chat.html">
               <div class="icon">
                 <ion-icon name="chatbox-outline"></ion-icon>
@@ -49,7 +48,7 @@
               <div class="text">Chat</div>
             </a>
           </li>
-          <li style="--bg:#fdc600 ;">
+          <li style="--bg: #fdc600">
             <a href="./pg4_post.html">
               <div class="icon">
                 <ion-icon name="chatbox-outline"></ion-icon>
@@ -57,7 +56,7 @@
               <div class="text">Posts</div>
             </a>
           </li>
-          <li style="--bg:  #FFEE12;">
+          <li style="--bg: #ffee12">
             <a href="./pg5_jogos.html">
               <div class="icon">
                 <ion-icon name="game-controller-outline"></ion-icon>
@@ -65,7 +64,7 @@
               <div class="text">Jogos</div>
             </a>
           </li>
-          <li style="--bg: #FFBACC  ;">
+          <li style="--bg: #ffbacc">
             <a href="./pg6_graficos.html">
               <div class="icon">
                 <ion-icon name="bar-chart-outline"></ion-icon>
@@ -75,19 +74,17 @@
           </li>
         </div>
         <div class="bottom">
-          <li style="--bg: #333;">
+          <li style="--bg: #333">
             <a href="#">
               <div class="icon">
                 <div class="imgBx">
-                  <img
-                    src="https://icons.veryicon.com/png/o/miscellaneous/merchant-pc20/system-settings-9999-20px.png"
-                  />
+                  <img id="imgUsuarioSessao" src="https://icons.veryicon.com/png/o/miscellaneous/merchant-pc20/system-settings-9999-20px.png" />
                 </div>
               </div>
-              <div class="text">Nome Usuario</div>
+              <div class="text" id="apelidoUsuarioSessao"></div>
             </a>
           </li>
-          <li style="--bg: #333;">
+          <li style="--bg: #333">
             <a href="../index.html">
               <div class="icon">
                 <ion-icon name="log-out-outline"></ion-icon>
@@ -98,87 +95,92 @@
         </div>
       </ul>
     </div>
+
+    <div class="centralizar">
+      <div class="container">
+        <div class="card__container">
+           <article class="card__article">
+              <img src="../assets/imagem/meikocard.jpg" alt="image" class="card__img">
+
+              <div class="card__data">
+                 <span class="card__description">5 de novembro, 2004</span>
+                 <h2 class="card__title">Meiko</h2>
+                 <a href="https://vocaloid.fandom.com/wiki/MEIKO" class="card__button">Leia mais!</a>
+              </div>
+           </article>
+
+           <article class="card__article">
+              <img src="../assets/imagem/kaitocard.jpg" alt="image" class="card__img">
+
+              <div class="card__data">
+                 <span class="card__description">17 de fevereiro, 2006</span>
+                 <h2 class="card__title">Kaito</h2>
+                 <a href="https://vocaloid.fandom.com/wiki/KAITO" class="card__button">Leia mais!</a>
+              </div>
+           </article>
+
+           <article class="card__article">
+              <img src="../assets/imagem/mikucard.jpg" alt="image" class="card__img">
+
+              <div class="card__data">
+                 <span class="card__description">31 de agosto, 2007</span>
+                 <h2 class="card__title">Hatsune Miku</h2>
+                 <a href="https://vocaloid.fandom.com/wiki/Hatsune_Miku" class="card__button">Leia mais!</a>
+              </div>
+           </article>
+           <article class="card__article">
+            <img src="../assets/imagem/rincard.jpg" alt="image" class="card__img">
+
+            <div class="card__data">
+               <span class="card__description">27 de dezembro, 2007</span>
+               <h2 class="card__title">Kagamine Rin</h2>
+               <a href="https://vocaloid.fandom.com/wiki/Kagamine_Rin_%26_Len" class="card__button">Leia mais!</a>
+            </div>
+         </article>
+
+         <article class="card__article">
+          <img src="../assets/imagem/lencard.jpg" alt="image" class="card__img">
+
+          <div class="card__data">
+             <span class="card__description">27 de dezembro, 2007</span>
+             <h2 class="card__title">Kagamine Len</h2>
+             <a href="https://vocaloid.fandom.com/wiki/Kagamine_Rin_%26_Len" class="card__button">Leia mais!</a>
+          </div>
+       </article>
+
+       <article class="card__article">
+        <img src="../assets/imagem/lukacard.jpg" alt="image" class="card__img">
+
+        <div class="card__data">
+           <span class="card__description">30 de janeiro, 2009</span>
+           <h2 class="card__title">Megurine Luka</h2>
+           <a href="https://vocaloid.fandom.com/wiki/Megurine_Luka" class="card__button">Leia mais!</a>
+        </div>
+     </article>
+
+        </div>
+     </div>
+    </div>
+    </div>
     
-    <div class="div-card">
-    <div class="card-container">
-      <div class="card" style="--bg:  #33CCBA;">
-          <img src="../assets/imagem/mikucard.jpg" alt="" />
-          <div class="card-content">
-            <h3>Hatsune Miku</h3>
-            
-            <a href="https://vocaloid.fandom.com/wiki/Hatsune_Miku" class="btn" onclick="openModal('modal1')">Read More</a>
-          </div>
-        </div>
-        <div class="card" style="--bg:  #3367CD ;">
-          <img src="../assets/imagem/kaitocard.jpg" alt="" />
-          <div class="card-content">
-            <h3>Kaito</h3>
-            
-            <a href="https://vocaloid.fandom.com/wiki/KAITO" class="btn">Veja Mais</a>
-          </div>
-        </div>
-        <div class="card" style="--bg:  #DE4444 ;">
-          <img src="../assets/imagem/meikocard.jpg" alt="" />
-          <div class="card-content">
-            <h3>Meiko</h3>
-            
-            <a href="https://vocaloid.fandom.com/wiki/MEIKO" class="btn">Veja Mais</a>
-          </div>
-        </div>
-        <div class="card" style="--bg:  #FFBACC;">
-          <img src="../assets/imagem/lukacard.jpg" alt="" />
-          <div class="card-content">
-            <h3>Megurine Luka</h3>
-            
-            <a href="https://vocaloid.fandom.com/wiki/Megurine_Luk" class="btn">Veja Mais</a>
-          </div>
-        </div>
-        <div class="card" style="--bg:  #FFEE12  ;">
-          <img src="../assets/imagem/lencard.jpg" alt="" />
-          <div class="card-content">
-            <h3>Kagamine Len</h3>
-            
-            <a href="https://vocaloid.fandom.com/wiki/KAGAMINElen" class="btn">Veja Mais</a>
-          </div>
-        </div>
-        <div class="card" style="--bg:  #FFCC11;">
-          <img src="../assets/imagem/rincard.jpg" alt="" />
-          <div class="card-content">
-            <h3>Kagamine Rin</h3>
-            
-            <a href="https://vocaloid.fandom.com/wiki/KAGAMINERIN" class="btn">Veja Mais</a>
-          </div>
-        </div>
-      </div>
-  </div>
+  </body>
 
-</body>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
+  <script>
+    let menuToggle = document.querySelector(".menuToggle");
+    let sidebar = document.querySelector(".sidebar");
+    menuToggle.onclick = function () {
+      menuToggle.classList.toggle("active");
+      sidebar.classList.toggle("active");
+    };
 
-<script>
-    let menuToggle = document.querySelector('.menuToggle');
-    let sidebar = document.querySelector('.sidebar');
-    menuToggle.onclick = function(){
-        menuToggle.classList.toggle('active');
-        sidebar.classList.toggle('active');
+    let Menulist = document.querySelectorAll(".Menulist li");
+    function activeLink() {
+      Menulist.forEach((item) => item.classList.remove("active"));
+      this.classList.add("active");
     }
-
-    let Menulist = document.querySelectorAll('.Menulist li');
-    function activeLink(){
-      Menulist.forEach((item) =>
-    item.classList.remove('active'));
-    this.classList.add('active')
- }
-      Menulist.forEach((item) =>
-      item.addEventListener('click',activeLink));
-   
-</script>
+    Menulist.forEach((item) => item.addEventListener("click", activeLink));
+  </script>
 </html>

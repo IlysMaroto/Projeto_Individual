@@ -1,0 +1,95 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  /* background-color: #f0f0f0; */
+  /* color: #333; */
+}
+
+body:has(.sidebar.active) .centralizar {
+  width: calc(100% - 300px);
+}
+
+.centralizar {
+  transition: width 0.5s;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  padding: 20px 20px 20px 20px;
+  width: calc(100% - 80px);
+}
+
+.content {
+  padding: 20px;
+  background-color: #fff;
+  margin-top: 10px;
+}
+
+.main-content {
+  flex-direction: column;
+  align-items: center;
+  align-content: space-between;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+section {
+  border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+}
+.infouser {
+  display: flex;
+  flex-direction: column;
+}
+.infouser .profile{
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  height: 100px;
+}
+
+/* section .infouser  */
+.profile .imagem img{
+  width: 10%;
+  height: 10%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+}
+/* section .infouser .profile .informacao */
+
+/* .pontuacoes */
+/* .pontuacoes #posts */
+/* .pontuacoes #velha */
+/* .pontuacoes #memoria */
+
+/* .graficoperfil #graficoperfil */
+
+/* .percentuais */
+/* .percentuais #genero */
+/* .percentuais #como */
+/* .percentuais #atuacao */
+
+/* .posts  */
+/* .posts #graficolinhapost */
+/* .posts #graficopizzapost */
+
+/* .ranking */
+/* .ranking #jogovelha */
+/* .ranking #jogovelha #graficorankvelha */
+/* .ranking #jogovelha #mediapontuacaovelha */
+
+
+
+/* .ranking #jogomemoria */
+/* .ranking #jogomemoria #graficorankmemoria */
+/* .ranking #jogomemoria #mediapontuacaomemoria */

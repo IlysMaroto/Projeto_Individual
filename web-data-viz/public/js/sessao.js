@@ -12,6 +12,13 @@ function validarSessao() {
     }
 }
 
+function carregarSessao(){
+    var imagem = sessionStorage.IMAGEM_USUARIO
+    var apelido = sessionStorage.APELIDO_USUARIO
+    apelidoUsuarioSessao.innerHTML = apelido
+    imgUsuarioSessao.src = `${imagem}`;
+}
+
 function limparSessao() {
     sessionStorage.clear();
     window.location = "../login.html";

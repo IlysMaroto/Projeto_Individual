@@ -1,186 +1,522 @@
 <!-- criação do dia 4, adição da pagina do perfil -->
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>39Talk | Perfil</title>
 
-<link rel="stylesheet" href="./../css/navbarSidebar.css">
+    <link rel="stylesheet" href="./../css/navbarSidebar.css" />
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
-    <link rel="stylesheet" href="../css/card.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-</head>
+    <link rel="stylesheet" href="../testes/perfil.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+  </head>
 
-<body>
-  <div class="menuToggle"></div>
-  <div class="sidebar">
-    <ul>
-      <li class="logo" style="--bg: #33CCBA;">
-        <a href="#">
-          <div class="icon"><ion-icon name="wifi-outline"></ion-icon></div>
-          <div class="text">39Talk</div>
-        </a>
-      </li>
-      <div class="Menulist">
-        <li style="--bg:  #3367CD  ;">
-          <a href="./pg1_home.html">
-            <div class="icon"><ion-icon name="home-outline"></ion-icon></div>
-            <div class="text">Home</div>
-          </a>
-        </li>
-        <li style="--bg:  #DE4444  ;" class="active">
-          <a href="./pg2_perfil.html">
-            <div class="icon">
-              <ion-icon name="person-outline"></ion-icon>
-            </div>
-            <div class="text">Perfil</div>
-          </a>
-        </li>
-        <li style="--bg:#fdc600 ;">
-          <a href="./pg3_chat.html">
-            <div class="icon">
-              <ion-icon name="chatbox-outline"></ion-icon>
-            </div>
-            <div class="text">Chat</div>
-          </a>
-        </li>
-        <li style="--bg:#fdc600 ;">
-          <a href="./pg4_post.html">
-            <div class="icon">
-              <ion-icon name="chatbox-outline"></ion-icon>
-            </div>
-            <div class="text">Posts</div>
-          </a>
-        </li>
-        <li style="--bg:  #FFEE12;">
-          <a href="./pg5_jogos.html">
-            <div class="icon">
-              <ion-icon name="game-controller-outline"></ion-icon>
-            </div>
-            <div class="text">Jogos</div>
-          </a>
-        </li>
-        <li style="--bg: #FFBACC  ;">
-          <a href="./pg6_graficos.html">
-            <div class="icon">
-              <ion-icon name="bar-chart-outline"></ion-icon>
-            </div>
-            <div class="text">Gráficos</div>
-          </a>
-        </li>
-      </div>
-      <div class="bottom">
-        <li style="--bg: #333;">
+  <body onload="loadData(), carregarSessao()">
+    <div class="menuToggle"></div>
+    <div class="sidebar">
+      <ul>
+        <li class="logo" style="--bg: #33ccba">
           <a href="#">
             <div class="icon">
-              <div class="imgBx">
-                <img
-                  src="https://icons.veryicon.com/png/o/miscellaneous/merchant-pc20/system-settings-9999-20px.png"
-                />
+              <ion-icon name="wifi-outline"></ion-icon>
+            </div>
+            <div class="text">39Talk</div>
+          </a>
+        </li>
+        <div class="Menulist">
+          <li style="--bg: #3367cd">
+            <a href="./pg1_home.html">
+              <div class="icon"><ion-icon name="home-outline"></ion-icon></div>
+              <div class="text">Home</div>
+            </a>
+          </li>
+          <li style="--bg: #de4444" class="active">
+            <a href="./pg2_perfil.html">
+              <div class="icon">
+                <ion-icon name="person-outline"></ion-icon>
               </div>
-            </div>
-            <div class="text">Nome Usuario</div>
-          </a>
-        </li>
-        <li style="--bg: #333;">
-          <a href="../index.html">
-            <div class="icon">
-              <ion-icon name="log-out-outline"></ion-icon>
-            </div>
-            <div class="text">Logout</div>
-          </a>
-        </li>
+              <div class="text">Perfil</div>
+            </a>
+          </li>
+          <li style="--bg: #fdc600">
+            <a href="./pg3_chat.html">
+              <div class="icon">
+                <ion-icon name="chatbox-outline"></ion-icon>
+              </div>
+              <div class="text">Chat</div>
+            </a>
+          </li>
+          <li style="--bg: #fdc600">
+            <a href="./pg4_post.html">
+              <div class="icon">
+                <ion-icon name="chatbox-outline"></ion-icon>
+              </div>
+              <div class="text">Posts</div>
+            </a>
+          </li>
+          <li style="--bg: #ffee12">
+            <a href="./pg5_jogos.html">
+              <div class="icon">
+                <ion-icon name="game-controller-outline"></ion-icon>
+              </div>
+              <div class="text">Jogos</div>
+            </a>
+          </li>
+          <li style="--bg: #ffbacc">
+            <a href="./pg6_graficos.html">
+              <div class="icon">
+                <ion-icon name="bar-chart-outline"></ion-icon>
+              </div>
+              <div class="text">Gráficos</div>
+            </a>
+          </li>
+        </div>
+        <div class="bottom">
+          <li style="--bg: #333">
+            <a href="#">
+              <div class="icon">
+                <div class="imgBx">
+                  <img id="imgUsuarioSessao" src="https://icons.veryicon.com/png/o/miscellaneous/merchant-pc20/system-settings-9999-20px.png" />
+                </div>
+              </div>
+              <div class="text" id="apelidoUsuarioSessao"></div>
+            </a>
+          </li>
+          <li style="--bg: #333">
+            <a href="../index.html">
+              <div class="icon">
+                <ion-icon name="log-out-outline"></ion-icon>
+              </div>
+              <div class="text">Logout</div>
+            </a>
+          </li>
+        </div>
+      </ul>
+    </div>
+
+    <div class="centralizar">
+      
+      <div class="image-container">
+        <img src="../assets/imagem/kaitocard.jpg" alt="Background Image">
       </div>
-    </ul>
-  </div>
-  
-  <div class="div-card">
-    <div class="card-container">
-      <div class="card" style="--bg:  #33CCBA;">
-          <img src="../assets/imagem/mikucard.jpg" alt="" />
-          <div class="card-content">
-            <h3>Hatsune Miku</h3>
-            
-            <a href="https://vocaloid.fandom.com/wiki/Hatsune_Miku" class="btn" onclick="openModal('modal1')">Read More</a>
-          </div>
-        </div>
-        <div class="card" style="--bg:  #3367CD ;">
-          <img src="../assets/imagem/kaitocard.jpg" alt="" />
-          <div class="card-content">
-            <h3>Kaito</h3>
-            
-            <a href="https://vocaloid.fandom.com/wiki/KAITO" class="btn">Veja Mais</a>
-          </div>
-        </div>
-        <div class="card" style="--bg:  #DE4444 ;">
-          <img src="../assets/imagem/meikocard.jpg" alt="" />
-          <div class="card-content">
-            <h3>Meiko</h3>
-            
-            <a href="https://vocaloid.fandom.com/wiki/MEIKO" class="btn">Veja Mais</a>
-          </div>
-        </div>
-        <div class="card" style="--bg:  #FFBACC;">
-          <img src="../assets/imagem/lukacard.jpg" alt="" />
-          <div class="card-content">
-            <h3>Megurine Luka</h3>
-            
-            <a href="https://vocaloid.fandom.com/wiki/Megurine_Luk" class="btn">Veja Mais</a>
-          </div>
-        </div>
-        <div class="card" style="--bg:  #FFEE12  ;">
-          <img src="../assets/imagem/lencard.jpg" alt="" />
-          <div class="card-content">
-            <h3>Kagamine Len</h3>
-            
-            <a href="https://vocaloid.fandom.com/wiki/KAGAMINElen" class="btn">Veja Mais</a>
-          </div>
-        </div>
-        <div class="card" style="--bg:  #FFCC11;">
-          <img src="../assets/imagem/rincard.jpg" alt="" />
-          <div class="card-content">
-            <h3>Kagamine Rin</h3>
-            
-            <a href="https://vocaloid.fandom.com/wiki/KAGAMINERIN" class="btn">Veja Mais</a>
-          </div>
-        </div>
+      <div class="content">
+          <main class="main-content">
+              <section class="profile-sidebar">
+                <img id="imagemPerfil" title="2" alt="Profile Picture" class="imgPerfil"> 
+                    <div class="profile-name">
+                      <div>
+                        <span id="profileName">AAA</span>
+                      </div>
+                      <button id="buttonEditarPerfil">Editar</button>
+                    </div>
+                    
+                  <div class="section">
+                    
+                      <pre id="profileInfo" wrap="wrap" style="color:gray; font-style:italic;">Escreva sua Bio!</pre>
+                      <!-- <div class="profile-info">   
+                              <p>Ilys | Batata | Libra | INFP | Ravenclaw</p>
+                              <p>Gosto de Vocaloid, IDOLM@STER, e gachas! Com sono lor 24/7. Infelizmente viciada em gacha.</p>
+                              <p>Joined January 2015</p>
+                      </div> -->
+                  </div>
+                  <div class="section">
+                      <h3>Atuação no Fandom</h3>
+                      <div class="text_viz">
+                        <p class="atuacao">Produtor de Conteúdo</p>
+                      </div>
+                      <div class="select_viz">
+                        <select name="atuacao" class="actSelect">
+                          <option value="1">Fã</option>
+                          <option value="2">Produtor de Conteúdo</option>
+                          <option value="3">Produtor de Música</option>
+                          <option value="4">Jogador</option>
+                          <option value="5">Artista</option>
+                          <option value="6">Cosplayer</option>
+                          <option value="7">Outro</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="section">
+                    <h3>Vocaloid Favorito</h3>
+                    <div class="text_viz">
+                      <p class="vocaloid">Hatsune Miku</p>
+                    </div>
+                    <div class="select_viz">
+                      <select name="vocaloid" class="vocSelect">
+                        <option value="1">Meiko</option>
+                        <option value="2">Kaito</option>
+                        <option value="3">Hatsune Miku</option>
+                        <option value="4">Kagamine Rin</option>
+                        <option value="5">Kagamine Len</option>
+                        <option value="6">Megurine Luka</option>
+                      </select>
+                    </div>
+                </div>
+                  <div class="section">
+                      <h3>Gostos atuais</h3>
+                      <div id="currentObsessions" class="currentObsessions">
+                        <pre id="gostoAtual" wrap="wrap"> #Vocaloid #Musica #Hatsune </pre>
+                      </div>
+                  </div>
+              </section>
+
+              <section class="main-content column-content">
+                  <div class="about-me">
+                      <h2>:: Sobre mim</h2>
+                      <pre id="aboutMe" wrap="wrap" style="color:gray; font-style:italic;">Escreva sobre você!</pre>
+                  </div>
+                  <div id="meusPostsContainer" class="posts-container">
+                      <h2>POSTS</h2>
+
+                  </div>
+              </section>
+              <section>
+                <div class="graficoPosts">
+                  <canvas id="generosPosts"></canvas>
+                </div>
+              </section>
+    
+          </main>
       </div>
-  </div>
+    </div>
+    
+  </body>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    const idUser = sessionStorage.getItem("ID_USUARIO")
+
+var VOCALOIDlist = 0;
+var MUSICAlist = 0;
+var CRYPTONlist = 0;
+var MIKUlist = 0;
+var KAITOlist = 0;
+var MEIKOlist = 0;
+var LUKAlist = 0;
+var LENlist = 0;
+var RINlist = 0;
+var PROSEKAIlist = 0;
+var OUTROSlist = 0;
 
 
-</body>
 
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
+    // Database Load
+    function loadData() {
+      fetch("/perfil/verificar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        iduserServer: idUser
+      }),
+    })
+      .then(function (resposta) {
+        
+        resposta.json().then(function (resposta) {
+          console.log("resposta: ", resposta);
+          console.log("Dados recebidos: ", JSON.stringify(resposta));
+          perfil = resposta[0]
+          console.log(perfil)
+          console.log(`perfilap ${perfil.apelido}`)
+          profileName.innerHTML = perfil.apelido
+          profileInfo.innerHTML = perfil.resumo
+          gostoAtual.innerHTML = perfil.gosto
+          aboutMe.innerHTML = perfil.sobre
+          var imgNova = document.getElementById('imagemPerfil') 
+          imgNova.setAttribute("src", perfil.imagem);
+          sessionStorage.IMAGEM_USUARIO = perfil.imagem;
+          imgUsuarioSessao.src = `${perfil.imagem}`;
 
-<script>
-    let menuToggle = document.querySelector('.menuToggle');
-    let sidebar = document.querySelector('.sidebar');
-    menuToggle.onclick = function(){
-        menuToggle.classList.toggle('active');
-        sidebar.classList.toggle('active');
+
+        })
+      })
+      .catch(function (resposta) {''
+        console.log(`#ERRO: ${resposta}`);
+       
+      });
+      fetch("/post/listarMeusPosts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          iduserServer: idUser
+        }),
+      })
+        .then(function (resposta) {
+          
+          resposta.json().then(function (resposta) {
+            console.log("resposta: ", resposta);
+            console.log("Dados recebidos: ", JSON.stringify(resposta));
+            var ContadorAuxiliar = 0;
+
+          for (let i = 0; i < resposta.length; i++) {
+            var post = resposta[i];
+              var tempo = post.datahora;
+              var time = formatData(tempo)
+              var tema = post.tema;
+              ContadorAuxiliar++;
+              meusPostsContainer.innerHTML += `
+              <div class="post-container">
+                          <h3>${post.titulo}</h3>
+                          <p>${post.texto}</p>
+                          <div class="post-meta">
+                              <div class="date">POSTED ${time}</div>
+                          </div>
+              </div>
+
+        `;
+
+        if (tema == 'VOCALOID'){
+          VOCALOIDlist ++;
+        }else if (tema == 'MUSICA'){
+          MUSICAlist ++;
+        }else if (tema == 'CRYPTON'){
+          CRYPTONlist ++;
+        }else if (tema == 'MIKU'){
+          MIKUlist ++;
+        }else if (tema == 'KAITO'){
+          KAITOlist ++;
+        }else if (tema == 'MEIKO'){
+          MEIKOlist ++;
+        }else if (tema == 'LUKA'){
+          LUKAlist ++;
+        }else if (tema == 'LEN'){
+          LENlist++;
+        }else if (tema == 'RIN'){
+          RINlist ++;
+        }else if (tema == 'PROSEKAI'){
+          PROSEKAIlist ++;
+        }else{
+          OUTROSlist ++;
+        }
+
+
+          }
+          plotarGraficos()
+          })
+        })
+        .catch(function (resposta) {''
+          console.log(`#ERRO: ${resposta}`);
+         
+        });
+
     }
 
-    let Menulist = document.querySelectorAll('.Menulist li');
-    function activeLink(){
-      Menulist.forEach((item) =>
-    item.classList.remove('active'));
-    this.classList.add('active')
- }
-      Menulist.forEach((item) =>
-      item.addEventListener('click',activeLink));
-   
-</script>
+  function plotarGraficos(){
+  var divGenerosPref = document.getElementById('generosPosts').getContext('2d');
+  divGenerosPref.canvas.parentNode.style.width = '500px';
+  divGenerosPref.canvas.parentNode.style.height = '500px';
+  divGenerosPref.canvas.width = 1;
+  divGenerosPref.canvas.height = 1;
+
+  
+  var optionsLegend = {
+    display: false,
+    labels: {
+      color: '#f0cf95',
+      font: {
+        size: 15,
+      },
+      padding: 40
+    },
+    position: 'bottom'
+  }
+
+  var graficogenerosPref = new Chart(
+    divGenerosPref,
+    {
+      type: 'doughnut',
+      data: {
+        labels: ['VOCALOID', 'MUSICA', 'CRYPTON', 'MIKU', 'KAITO', 'MEIKO', 'LUKA', 'LEN', 'RIN', 'PROSEKAI', 'OUTROS'],
+        datasets: [{
+          data: [VOCALOIDlist, MUSICAlist, CRYPTONlist, MIKUlist, KAITOlist, MEIKOlist, LUKAlist, LENlist, RINlist, PROSEKAIlist, OUTROSlist],
+          backgroundColor: [
+            '#000000',
+            '#33ccba',
+            '#1506fa',
+            '#4125fc',
+            '#6c45fd',
+            '#ffffff',
+            '#9864fe',
+            '#c383ff',
+            '#4125fc',
+          ],
+          label: 'Posts Feitos'
+        }]
+      },
+      options: {
+        plugins: {
+          title: {
+            color: '#1506fa',
+            display: true,
+            text: 'Posts feitos',
+            font: {
+              size: 31
+            },
+            padding: 30
+          },
+          legend: optionsLegend
+        }
+      }
+    }
+  )
+    }
+    // sidebar:
+    let menuToggle = document.querySelector(".menuToggle");
+    let sidebar = document.querySelector(".sidebar");
+    menuToggle.onclick = function () {
+      menuToggle.classList.toggle("active");
+      sidebar.classList.toggle("active");
+    };
+
+    let Menulist = document.querySelectorAll(".Menulist li");
+    function activeLink() {
+      Menulist.forEach((item) => item.classList.remove("active"));
+      this.classList.add("active");
+    }
+    Menulist.forEach((item) => item.addEventListener("click", activeLink));
+
+    // editar perfil:
+    const buttonEditarPerfil = document.querySelector("#buttonEditarPerfil");
+    const profileName = document.querySelector("#profileName");
+    const profileInfo = document.querySelector("#profileInfo");
+    const aboutMe = document.querySelector("#aboutMe");
+    const obsessions = document.querySelector('#currentObsessions');
+    const fandom = document.querySelector(".atuacao");
+    const vocaloid = document.querySelector(".vocaloid");
+    const imagemProf = document.querySelector(".imgPerfil");
+    const select_viz = document.getElementsByClassName("select_viz");
+    const text_viz = document.getElementsByClassName("text_viz");
+
+    function editarPerfil() {
+      if (buttonEditarPerfil.innerHTML === "Editar") {
+        buttonEditarPerfil.innerHTML = "Salvar";
+        profileInfo.style.color = "black"; 
+        profileInfo.style.fontStyle = "normal";
+        aboutMe.style.color = "black"; 
+        aboutMe.style.fontStyle = "normal";
+
+        profileName.classList.add("editavel");
+        profileInfo.classList.add("editavel");
+        aboutMe.classList.add("editavel");
+        obsessions.classList.add("editavel");
+        select_viz[0].classList.add("editavel");
+        select_viz[1].classList.add("editavel");
+
+        profileName.contentEditable = true;
+        profileInfo.contentEditable = true;
+        aboutMe.contentEditable = true;
+        obsessions.contentEditable = true;
+
+        select_viz[0].style.display = "block";
+        select_viz[1].style.display = "block";
+        text_viz[0].style.display = "none";
+        text_viz[1].style.display = "none";
+      } else {
+        buttonEditarPerfil.innerHTML = "Editar";
+
+        profileName.classList.remove("editavel");
+        profileInfo.classList.remove("editavel");
+        aboutMe.classList.remove("editavel");
+        obsessions.classList.remove("editavel");
+        select_viz[0].classList.remove("editavel");
+        select_viz[1].classList.remove("editavel");
+
+        profileName.contentEditable = false;
+        profileInfo.contentEditable = false;
+        aboutMe.contentEditable = false;
+        obsessions.contentEditable = false;
+
+        select_viz[0].style.display = "none";
+        select_viz[1].style.display = "none";
+        text_viz[0].style.display = "block";
+        text_viz[1].style.display = "block";
+        
+        const voc_select = document.querySelector(".vocSelect");
+        const fand_select = document.querySelector(".actSelect");
+        vocaloid.innerHTML = voc_select.options[voc_select.selectedIndex].text;
+        fandom.innerHTML = fand_select.options[fand_select.selectedIndex].text;
+
+        if (profileInfo.innerHTML == "") {
+          profileInfo.innerHTML = "Escreva sua Bio!";
+          profileInfo.style.color = "gray"; 
+          profileInfo.style.fontStyle = "italic";
+        }
+        
+        if (aboutMe.innerHTML == "") {
+          aboutMe.innerHTML = "Escreva sobre você!";
+          aboutMe.style.color = "gray"; 
+          aboutMe.style.fontStyle = "italic";
+        }
+
+        // Send data to Database
+        fetch("/perfil/atualizar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            apelidoServer: profileName.textContent,
+            resumoServer: profileInfo.innerHTML,
+            gostoServer: obsessions.querySelector('pre').textContent,
+            sobreServer: aboutMe.innerHTML,
+            vocaloidServer: voc_select.value,
+            atuacaoServer: fand_select.value,
+            imagemServer: voc_select.value,
+            idUserServer: idUser
+          }),
+        })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+            sessionStorage.APELIDO_USUARIO = profileName.textContent;
+            window.location.reload();
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        
+        });
+      }
+    }
+
+    buttonEditarPerfil.addEventListener("click", editarPerfil);
+
+    function formatData(isoDate) {
+      const date = new Date(isoDate);
+      
+      // Array com os nomes dos meses
+      const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+    
+      // Obtém os componentes da data
+      const month = months[date.getUTCMonth()];
+      const year = date.getUTCFullYear();
+      let hours = date.getUTCHours();
+      const minutes = date.getUTCMinutes();
+    
+      // Converte horas para formato 12 horas
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // Se a hora for 0, ajuste para 12
+    
+      // Formata os minutos para garantir dois dígitos
+      const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+    
+      // Monta a data formatada
+      return `${month}, ${year} @ ${hours}:${formattedMinutes} ${ampm}`;
+    }
+
+  </script>
 </html>

@@ -7,20 +7,36 @@
   --clr: #161618;
 }
 body {
+  display: flex;
   min-height: 100vh;
   background: var(--clr);
 }
 .sidebar {
-  position: absolute;
+  position: fixed;
   width: 80px;
   height: 100vh;
   background: #fff;
   transition: 0.5s;
   padding-left: 10px;
   overflow: hidden;
+  z-index: 2;
 }
 .sidebar.active {
   width: 300px;
+}
+
+.centralizar {
+  transition: width 0.5s;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  padding: 20px 20px 20px 20px;
+  width: calc(100% - 80px);
+}
+
+body:has(.sidebar.active) .centralizar {
+  width: calc(100% - 300px);
 }
 
 .sidebar ul {

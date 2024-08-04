@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center; 
-    min-height: 100vh; 
+    min-height: 85vh; 
     padding-top: 50px; 
 }
 
@@ -14,12 +14,12 @@
 
 .card {
     width: 300px;
-    height: auto;
+    height: 400px;
     background-color: var(--bg);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0px 2px 4px rgb(0, 0, 0.2);
-    margin: 20px;
+    margin: 40px;
 }
 
 .card .img {
@@ -34,6 +34,7 @@
     width: auto;
     max-height: 100%;
     object-fit: cover; 
+    padding: 20px;
 }
 
 .card-content {

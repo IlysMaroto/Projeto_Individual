@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="post.css" />
+    <title>Post</title>
+  </head>
+
+  <body>
+    <main class="main">
+      <!-- Formulário de postagem -->
+      <div class="newPost">
+        <div class="infoUser">
+          <div class="imgUser"></div>
+          <strong id="nameUser"></strong>
+        </div>
+
+        <form action="" class="formPost" id="formPost">
+          <textarea name="textarea" placeholder="Vamos mudar o mundo?" id="textarea"></textarea>
+          <div class="iconsAndButton">
+            <button type="submit" id="botao" class="btnSubmitForm">Publicar</button>
+          </div>
+        </form>
+      </div>
+
+      <ul class="posts" id="posts"></ul>
+    </main>
+    <script type="module">
+      export class FormPost {
+        constructor(idForm, idTextarea, ListPost) {
+          this.form = document.getElementById(idForm);
+          this.textarea = document.getElementById(idTextarea);
+          this.listPost = document.getElementById(ListPost);
+          this.addSubmit();
+        }
+
+        formValidate(value) {
+          if (value === "" || value === null || value === undefined || value.length < 1 || value.length > 256) {
+            return false;
+          }
+          return true;
+        }
+
+        onSubmit(func) {
+          this.form.addEventListener("submit", func);
+        }
+
+        addSubmit() {
+          const handleSubmit = (event) => {
+            event.preventDefault();
+            if (this.formValidate(this.textarea.value)) {
+              // fetch().then().catch();
+              const newPost = document.createElement("li");
+              newPost.classList.add("post");
+              const time = this.getTime();
+              newPost.innerHTML = `
+        <div class="infoUserPost">
+          <div class="imgUserPost"></div>
+
+          <div class="nameAndHour">
+            <strong id="nameUser"></strong>
+            <p>${time}</p>
+          </div>
+        </div>
+
+        <p>
+         ${this.textarea.value}
+        </p>
+
+        `;
+              this.listPost.appendChild(newPost);
+              this.textarea.value = "";
+            } else if (this.textarea.value.length < 1) {
+              alert("Escreva algo antes de enviar seu post!");
+            }  else if (this.textarea.value.length > 256) {
+              alert(`Você passou do limite de 256 caracteres! (${this.textarea.value.length})`);
+            } 
+          };
+
+          this.onSubmit(handleSubmit);
+        }
+
+        getTime() {
+          const time = new Date();
+          const hour = time.getHours();
+          const minutes = time.getMinutes();
+          return `${hour}h ${minutes}min`;
+        }
+      }
+
+      const postForm = new FormPost("formPost", "textarea", "posts");
+    </script>
+  </body>
+</html>

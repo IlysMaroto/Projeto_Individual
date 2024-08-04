@@ -9,35 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-    <!-- <header>
-        <nav class="nav-bar">
-            <div class="logo">
-                <h1>39TALK</h1>
-            </div>
-            <div class="nav-list">
-                <ul>
-                    <li class="nav-item"><a href="./index.css" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a href="./index.css" class="nav-link">Sobre</a></li>
-                    <li class="nav-item"><a href="./index.css" class="nav-link"> Vocaloids</a></li>
-                </ul>
-            </div>
-            <div class="login-button">
-                <button><a href="./cadastrar.html">Entrar</a></button>
-            </div>
-        </nav>
-        </div>
-    </header>
-     -->
     <div class="container">
       <div class="signin-signup">
         <form onsubmit="submitForm(event)" action="" class="sign-in-form">
           <h2 class="title">Login</h2>
           <div class="input-field">
-            <i class="fas fa-user"></i>
+            <!-- <i class="fas fa-user"></i> -->
             <input type="text" placeholder="Nome" id="input_usuarioL" />
           </div>
           <div class="input-field">
-            <i class="fas fa-lock"></i>
+            <!-- <i class="fas fa-lock"></i> -->
             <input type="password" placeholder="Senha" id="input_senhaL" />
           </div>
           <button onclick="entrar()" type="" value="Login" class="btn" id="input_submit">Login</button>
@@ -49,30 +30,30 @@
           <h2 class="title-cadastrar">Cadastrar-se</h2>
           <br /><br />
           <div class="input-field">
-            <i class="fas fa-user"></i>
+            <!-- <i class="fas fa-user"></i> -->
             <input type="text" placeholder="Usuário" id="input_usuarioC" />
           </div>
           <div class="input-field">
-            <i class="fas fa-envelope"></i>
+            <!-- <i class="fas fa-envelope"></i> -->
             <input type="email" placeholder="Email" id="input_email" />
           </div>
           <div class="input-field">
-            <i class="fas fa-lock"></i>
+            <!-- <i class="fas fa-lock"></i> -->
             <input type="password" placeholder="Senha" id="input_senhaC" />
           </div>
           <div class="input-field">
-            <i class="fas fa-lock"></i>
+            <!-- <i class="fas fa-lock"></i> -->
             <input type="password" placeholder="Confirme sua senha" id="input_confimarSenha" />
           </div>
           <!-- mundança do dia 03, mudança de posição já que o botão de cadastrar estava antes das informações -->
           <p class="social-text">Preencha as informações do seu perfil</p>
           <div class="input-field">
-            <i class="fas fa-user"></i>
+            <!-- <i class="fas fa-user"></i> -->
             <input type="text" placeholder="Nickname" id="input_nickname" />
           </div>
           <!-- mundança do dia 03, mudança de posição das informações aniversario e genero-->
           <div class="input-field">
-            <i class="fas fa-birthday-cake"></i>
+            <!-- <i class="fas fa-birthday-cake"></i> -->
             <input type="date" placeholder="Data de Nascimento" id="input_dataNasc" />
           </div>
           <div class="input-field">
@@ -85,13 +66,13 @@
           <div class="input-field">
             <select id="vocaFav">
               <option value="" disabled selected>Vocaloid favorito</option>
-              <option value="1">Hatsune Miku</option>
+              <option value="1">Meiko</option>
               <option value="2">Kaito</option>
-              <option value="3">Meiko</option>
+              <option value="3">Hatsune Miku</option>
               <!-- mudança do dia 02, mudança nos nomes das opções -->
-              <option value="4">Megurine Luka</option>
+              <option value="4">Kagamine Rin</option>
               <option value="5">Kagamine Len</option>
-              <option value="6">Kagamine Rin</option>
+              <option value="6">Megurine Luka</option>
             </select>
           </div>
           <div class="input-field">
@@ -125,7 +106,7 @@
           <div class="content">
             <h3>Não possui uma conta?</h3>
             <p>Clique aqui para criar uma nova conta</p>
-            <button class="btn" id="sign-up-btn" onclick="cadastrar()">Criar conta</button>
+            <button class="btn" id="sign-up-btn">Criar conta</button>
           </div>
           <!-- <img alt="" class="image"> -->
         </div>
@@ -169,12 +150,16 @@
     var senhaVar = input_senhaC.value;
     // alteração dia 11 - adição das variaveis para nascimento e como conheceu
     var confirmacaoSenhaVar = input_confimarSenha.value;
+    var apelidoVar = input_nickname.value;
     var nascVar = input_dataNasc.value;
     var generoVar = slc_genero.value;
     var vocaloidVar = vocaFav.value;
     var comoConheceuVar = comoVar.value;
-    if (usuarioVar === "" || emailVar === "" || senhaVar === "" || nascVar === "" || generoVar === "" || vocaloidVar === "" || comoConheceuVar === "") return false;
-    console.log(usuarioVar, emailVar, senhaVar, confirmacaoSenhaVar, nascVar, generoVar, vocaloidVar, comoConheceuVar);
+    if (usuarioVar === "" || emailVar === "" || senhaVar === "" || apelidoVar === "" || nascVar === "" || generoVar === "" || vocaloidVar === "" || comoConheceuVar === "") {
+      console.log("Informações Incompletas")
+      return false;
+    }
+    console.log(usuarioVar, emailVar, senhaVar, confirmacaoSenhaVar, apelidoVar, nascVar, generoVar, vocaloidVar, comoConheceuVar);
     // Enviando o valor da nova input
     if (senhaVar !== confirmacaoSenhaVar) return false;
     fetch("/usuarios/cadastrar", {
@@ -192,6 +177,7 @@
         fkconhecimentoServer: comoConheceuVar,
         fkgeneroServer: generoVar,
         vocaloidServer: vocaloidVar,
+        apelidoServer: apelidoVar
       }),
     })
       .then(function (resposta) {
@@ -261,10 +247,12 @@
             sessionStorage.ID_USUARIO = json.idusuario;
             sessionStorage.NOME_USUARIO = json.nome;
             sessionStorage.EMAIL_USUARIO = json.email;
+            
+            sessionStorage.APELIDO_USUARIO = json.apelido;
+            sessionStorage.IMAGEM_USUARIO = json.imagem;
             sessionStorage.SENHA = JSON.stringify(json.senha);
-
             setTimeout(function () {
-              window.location = "./dashboard/jogos.html";
+              window.location = "./dashboard/pg1_home.html";
             }, 1000); // apenas para exibir o loading
           });
         } else {

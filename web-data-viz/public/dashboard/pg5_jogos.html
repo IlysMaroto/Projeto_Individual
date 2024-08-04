@@ -8,7 +8,7 @@
     <title>39Talk | Jogos</title>
 
     <link rel="stylesheet" href="./../css/navbarSidebar.css" />
-    <link rel="stylesheet" href="../css/card.css">
+    <link rel="stylesheet" href="../css/card.css" />
 
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
@@ -18,24 +18,24 @@
         rel="stylesheet"> -->
   </head>
 
-  <body>
+  <body onload="carregarSessao()">
     <div class="menuToggle"></div>
     <div class="sidebar">
       <ul>
-        <li class="logo" style="--bg: #33CCBA;">
+        <li class="logo" style="--bg: #33ccba">
           <a href="#">
             <div class="icon"><ion-icon name="wifi-outline"></ion-icon></div>
             <div class="text">39Talk</div>
           </a>
         </li>
         <div class="Menulist">
-          <li style="--bg:  #3367CD  ;">
+          <li style="--bg: #3367cd">
             <a href="./pg1_home.html">
               <div class="icon"><ion-icon name="home-outline"></ion-icon></div>
               <div class="text">Home</div>
             </a>
           </li>
-          <li style="--bg:  #DE4444  ;">
+          <li style="--bg: #de4444">
             <a href="./pg2_perfil.html">
               <div class="icon">
                 <ion-icon name="person-outline"></ion-icon>
@@ -43,7 +43,7 @@
               <div class="text">Perfil</div>
             </a>
           </li>
-          <li style="--bg:#fdc600 ;">
+          <li style="--bg: #fdc600">
             <a href="./pg3_chat.html">
               <div class="icon">
                 <ion-icon name="chatbox-outline"></ion-icon>
@@ -51,7 +51,7 @@
               <div class="text">Chat</div>
             </a>
           </li>
-          <li style="--bg:#fdc600 ;">
+          <li style="--bg: #fdc600">
             <a href="./pg4_post.html">
               <div class="icon">
                 <ion-icon name="chatbox-outline"></ion-icon>
@@ -59,7 +59,7 @@
               <div class="text">Posts</div>
             </a>
           </li>
-          <li style="--bg:  #FFEE12;" class="active">
+          <li style="--bg: #ffee12" class="active">
             <a href="./pg5_jogos.html">
               <div class="icon">
                 <ion-icon name="game-controller-outline"></ion-icon>
@@ -67,7 +67,7 @@
               <div class="text">Jogos</div>
             </a>
           </li>
-          <li style="--bg: #FFBACC  ;">
+          <li style="--bg: #ffbacc">
             <a href="./pg6_graficos.html">
               <div class="icon">
                 <ion-icon name="bar-chart-outline"></ion-icon>
@@ -77,19 +77,17 @@
           </li>
         </div>
         <div class="bottom">
-          <li style="--bg: #333;">
+          <li style="--bg: #333">
             <a href="#">
               <div class="icon">
                 <div class="imgBx">
-                  <img
-                    src="https://icons.veryicon.com/png/o/miscellaneous/merchant-pc20/system-settings-9999-20px.png"
-                  />
+                  <img id="imgUsuarioSessao" src="https://icons.veryicon.com/png/o/miscellaneous/merchant-pc20/system-settings-9999-20px.png" />
                 </div>
               </div>
-              <div class="text">Nome Usuario</div>
+              <div class="text" id="apelidoUsuarioSessao"></div>
             </a>
           </li>
-          <li style="--bg: #333;">
+          <li style="--bg: #333">
             <a href="../index.html">
               <div class="icon">
                 <ion-icon name="log-out-outline"></ion-icon>
@@ -101,29 +99,37 @@
       </ul>
     </div>
 
-    <div class="div-card">
-      <div class="card-container">
-      <div class="card" style="--bg: #33ccba">
-        <div class="img"> <img src="../assets/imagem/jogoVelha.png" alt="" /></div>
-        <div class="card-content">
-          <h3>Jogo da Velha</h3>
-          <p>No jogo da velha, seu objetivo é alinhar <br> três símbolos em uma grade 3x3 <br> contra um adversário virtual</p>
-          <a href="./jogos/jogovelha.html" class="btn">Jogar ?</a>
-        </div>
-      </div>
-      <div class="card" style="--bg: #33ccba">
-        <div class="img"><img src="../assets/imagem/jogoMemoria.png" alt="" /></div>
-        
-        <div class="card-content">
-          <h3>Jogo da Memória</h3>
-          <p>No jogo da memória, seu desafio é <br> encontrar todos os pares de<br> cartas idênticas</p>
-          <a href="./jogos/jogomemoria.html" class="btn">Jogar ?</a>
+    <div class="centralizar">
+      <div class="div-card">
+        <div class="card-container">
+          <div class="card" style="--bg: #33ccba">
+            <div class="img"><img src="../assets/imagem/jogoVelha.png" alt="" /></div>
+            <div class="card-content">
+              <h3>Jogo da Velha</h3>
+              <p>
+                No jogo da velha, seu objetivo é alinhar <br />
+                três símbolos em uma grade 3x3 <br />
+                contra um adversário virtual
+              </p>
+              <a href="./jogos/jogovelha.html" class="btn">Jogar ?</a>
+            </div>
+          </div>
+          <div class="card" style="--bg: #33ccba">
+            <div class="img"><img src="../assets/imagem/jogoMemoria.png" alt="" /></div>
+
+            <div class="card-content">
+              <h3>Jogo da Memória</h3>
+              <p>
+                No jogo da memória, seu desafio é <br />
+                encontrar todos os pares de<br />
+                cartas idênticas
+              </p>
+              <a href="./jogos/jogomemoria.html" class="btn">Jogar ?</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-    
-
   </body>
 
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

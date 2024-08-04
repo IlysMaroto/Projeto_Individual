@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="chat2.css" />
+  </head>
+  <body>
+    <div id="chat-container">
+      <div id="messages"></div>
+      <input type="text" id="message-input" placeholder="Digite sua mensagem..." />
+      <button id="send-button">Enviar</button>
+    </div>
+
+    <script>
+      const messagesDiv = document.getElementById("messages");
+      const messageInput = document.getElementById("message-input");
+      const sendButton = document.getElementById("send-button");
+
+      sendButton.addEventListener("click", () => {
+        const message = messageInput.value.trim();
+        if (message !== "") {
+          // Enviar mensagem para o servidor
+          fetch("/enviar-mensagem", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ message }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              messageInput.value = "";
+            })
+            .catch((error) => console.error("Erro ao enviar mensagem:", error));
+        }
+      });
+
+      // Atualizar mensagens a cada 10 segundos
+      setInterval(() => {
+        fetch("/mensagens")
+          .then((res) => res.json())
+          .then((data) => {
+            const messagesHTML = data
+              .map((message) => {
+                return `
+                <div>
+                    <span>${message.usuario}</span>
+                    <span>${message.mensagem}</span>
+                    <span>${message.data}</span>
+                </div>
+            `;
+              })
+              .join("");
+            messagesDiv.innerHTML = messagesHTML;
+          })
+          .catch((error) => console.error("Erro ao carregar mensagens:", error));
+      }, 10000);
+    
+const express = require('express');
+const app = express();
+const mysql = require('mysql');
+
+// Configuração do banco de dados
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '155115',
+  database: '39talk'
+});
+
+db.connect((err) => {
+  if (err) {
+    console.error('Erro ao conectar ao banco de dados:', err);
+    return;
+  }
+  console.log('Conectado ao banco de dados!');
+});
+
+// Rota para enviar mensagem
+app.post('/enviar-mensagem', (req, res) => {
+  const { message } = req.body;
+  const fkusuario = 1; // Você precisa implementar a autenticação para obter o ID do usuário real
+
+  db.query(`
+    INSERT INTO mensagem (mensagem, datahora, fkusuario)
+    VALUES (?, NOW(), ?);
+  `, [message, fkusuario], (err, results) => {
+    if (err) {
+      console.error('Erro ao enviar mensagem:', err);
+      res.status(500).send({ message: 'Erro ao enviar mensagem' });
+    } else {
+      res.send({ message: 'Mensagem enviada com sucesso' });
+    }
+  });
+});
+
+// Rota para obter mensagens
+app.get('/mensagens', (req, res) => {
+  db.query(`
+    SELECT * FROM mensagem
+    ORDER BY datahora DESC;
+  `, (err, results) => {
+    if (err) {
+      console.error('Erro ao obter mensagens:', err);
+      res.status(500).send({ message: 'Erro ao obter mensagens' });
+    } else {
+      res.send(results);
+    }
+  });
+});
+
+app.listen(3000, () => {
+  console.log('Servidor rodando na porta 3000!');
+});
+
+    </script>
+  </body>
+</html>

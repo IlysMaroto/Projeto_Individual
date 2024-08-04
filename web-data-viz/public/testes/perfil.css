@@ -2,8 +2,8 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
-    color: #333;
+    /* background-color: #f0f0f0; */
+    /* color: #333; */
 }
 
 .header {
@@ -67,67 +67,117 @@ body {
     margin-top: 10px; 
 }
 
-.sidebar {
+.profile-sidebar {
     padding: 20px;
     background-color: #fff;
     margin-top: 10px;
     display: flex;
+    /* align-items: center; */
     flex-direction: column;
     gap: 10px;
 }
 
-.sidebar .section {
+.profile-sidebar .section {
     border: 1px solid #ccc;
     padding: 15px;
     border-radius: 5px;
 }
 
-.sidebar .section h3 {
+.profile-sidebar .section h3 {
     margin-top: 0;
 }
 
-.sidebar .social-links {
+.profile-sidebar .social-links {
     display: flex;
     gap: 10px;
 }
 
-.sidebar .social-links a {
+.profile-sidebar .social-links a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
 }
 
-.sidebar .section .links {
+.profile-sidebar .section .links {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.sidebar .section .links a {
+.profile-sidebar .section .links a {
     text-decoration: none;
     color: #333;
 }
 
-.sidebar .section .links a:hover {
+.profile-sidebar .section .links a:hover {
     text-decoration: underline;
 }
 
-.sidebar .section .profile-info {
+/* .profile-sidebar .section .profile-name {
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+} */
+.profile-name {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+}
+.profile-name span {
+    font-size: 2rem;
+    font-weight: 600;
+}
+.profile-sidebar .section:has(.editavel) {
+    border: 2px solid lime;
+}
+#profileName.editavel {
+    border-radius: 5px;
+    border: 2px solid lime;
+    padding: 0.1em;
+}
+.about-me:has(.editavel) {
+    border: 2px solid lime;
+}
+.about-me pre {
+    width: 100%;
+}
+#buttonEditarPerfil {
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid lime;
+    color: lime;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 0.5rem;
 }
 
-.sidebar .section .profile-info img {
+pre {
+    overflow: auto;
+    width: 20em;
+    word-break: break-all;
+    font-family: 'Arial', sans-serif;
+}
+
+.profile-sidebar .section #profileInfo img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
 }
 
-.main-content {
+ .main-content {
     display: flex;
-    gap: 20px; 
-}
+    /* flex-direction: column; */
+    /* align-items: center; */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+  }
+
+  .column-content {
+    flex-direction: column;
+  }
 
 .post-container {
     padding: 15px;
@@ -158,31 +208,19 @@ body {
     color: #777;
 }
 
-.post-container .post-meta .actions {
-    display: flex;
-    gap: 10px;
-}
-
-.post-container .post-meta .actions a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-.post-container .post-meta .actions a:hover {
-    text-decoration: underline;
-}
-
 .about-me {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
     width: calc(100% - 20px); 
     box-sizing: border-box; 
+    align-items: center;
+    padding: 15px;
 }
 
 .about-me h2 {
     margin-top: 0;
+    
 }
 
 .about-me .post-content {
@@ -206,3 +244,52 @@ body {
     margin-top: 10px;
 }
 
+.imgPerfil{
+
+    z-index: 1;
+    margin-top: -60%;
+    border: 5px solid rgba(0, 0, 0, 0.308);
+    width: 280px;
+    border-radius: 100%;
+}
+
+.perfilAmigos{
+    display: flex;
+    justify-content: space-around;
+    height: 68px;
+    align-items: center;
+    border-bottom:2px solid rgba(128, 128, 128,0.3);
+}
+
+.perfilAmigos img{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+
+.containerPerfilAmigos{
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.containerPerfilAmigos a{
+    margin-top: 5px;
+}
+
+.containerPerfilAmigos button{
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid pink;
+    margin-bottom: 5px;
+    color: pink;
+    border-radius: 20px;
+    width: 100px;
+    height: 25px;
+}
+
+.select_viz {
+    display: none;
+}

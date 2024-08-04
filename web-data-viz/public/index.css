@@ -3,11 +3,21 @@
   padding: 0;
   margin: 0;
   font-family: "Inter", sans-serif;
+  /* background-image: linear-gradient(to bottom, #c1c8d6, #bcd3ff, #dde5f4); */
+}
+
+body{
+  font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  background-image: radial-gradient(farthest-corner at 0% 0%, #ffffff, #c1c8d6, #bcd3ff, #dde5f4);
+  background-attachment: fixed;
 }
 
 header {
   background-color: #5CE1E6;
   box-shadow: 0px 3px 10px #464646;
+  position: sticky;
 }
 
 header .nav-bar img {
@@ -81,7 +91,104 @@ header .nav-bar img {
   }
 }
 
-section.slider {
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+}
+
+section {
+  padding: 2em;
+  margin-bottom: 1em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.voc-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  font-family: "Montserrat Black", sans-serif;
+  color: #5ce1e6;
+  text-shadow: 2px 2px 5px #d3d3d3;
+  white-space: nowrap;
+  z-index: -1;
+}
+
+.voc-letter {
+  animation: wave-loop 4s ease-in-out infinite, fade-loop 4s ease-in-out infinite;
+  animation-delay: calc(var(--letter-index) * 0.2s);
+  display: inline-block;
+  margin: 0 5px;
+  opacity: 0;
+}
+
+@keyframes wave-loop {
+  0% {
+      transform: translateY(0) rotate(0deg);
+  }
+  50% {
+      transform: translateY(60px) rotate(7.5deg);
+  }
+  100% {
+      transform: translateY(-120px) rotate(-15deg);
+  }
+}
+
+@keyframes fade-loop {
+  0% {
+      opacity: 0;
+  }
+  15% {
+      opacity: 1;
+  }
+  80% {
+      opacity: 1;
+  }
+  95% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 0;
+  }
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+}
+
+.image-container {
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  margin-right: 1em;
+}
+
+.small-image-container {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  margin-left: 1em;
+}
+
+.footer-bottom {
+  padding: 1em;
+}
+
+/* section.slider {
   margin: auto;
   width: auto;
   background: url("./assets/imagem/VOCALOID.png") no-repeat;
@@ -95,13 +202,13 @@ section.slider {
   width: 400%;
   height: auto;
   display: flex;
-}
+} */
 
 /* .slider-content input, .img-mobile{
     display: none;
 } */
 
-.slide-box {
+/* .slide-box {
   width: 25%;
   height: 25%;
   position: relative;
@@ -162,13 +269,13 @@ section.slider {
 @media screen and (max-width: 900px) {
   .img-desktop {
     display: none;
-  }
+  } */
 
   /* .img-mobile{
         display: block;
     } */
 
-  .nav-auto,
+  /* .nav-auto,
   .nav-manual {
     margin-top: 60%;
   }
@@ -184,7 +291,7 @@ section.slider {
 .container1 {
   max-width: 1080px;
   margin: 0 auto;
-}
+} */
 
 ::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.877);
@@ -203,13 +310,13 @@ section.slider {
   background: #64ebd4;
 }
 
-h1 {
+/* h1 {
   color: rgb(17, 127, 179);
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"); */
 
-.container {
+/* .container {
   position: relative;
   width: 90%;
   display: grid;
@@ -289,7 +396,7 @@ h1 {
 
 .sobre {
   background-color: #f2efef;
-}
+} */
 
 .nav-item a {
   display: inline-block;

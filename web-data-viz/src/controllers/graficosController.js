@@ -1,4 +1,4 @@
-var usuarioModel = require("../models/usuarioModel");
+var graficosModel = require("../models/graficosModel");
 
 function cadastrar(req, res) {
   // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -12,12 +12,9 @@ function cadastrar(req, res) {
   var fkgenero = req.body.fkgeneroServer;
   var vocaloid = req.body.vocaloidServer;
   var apelido = req.body.apelidoServer;
-  var resumo = null; 
-  // 'Escreva sua Bio aqui!'
-  var gosto = null;
-  // 'Fale um pouco dos seus gostos aqui!'
-  var sobre = null;
-  // 'Fale um pouco sobre o você'
+  var resumo = null
+  var gosto = null
+  var sobre = null
   var fkimagem = vocaloid;
   var fkatuacao = 1;
 
@@ -74,9 +71,6 @@ function autenticar(req, res) {
                 email: resultadoAutenticar[0].email,
                 nome: resultadoAutenticar[0].nome,
                 senha: resultadoAutenticar[0].senha,
-                apelido: resultadoAutenticar[0].apelido,
-                imagem: resultadoAutenticar[0].imagem,
-                
               });
             
         } else if (resultadoAutenticar.length == 0) {
@@ -93,8 +87,46 @@ function autenticar(req, res) {
   }
 }
 
-function listarUsuarios(req, res) {
-  usuarioModel.listarUsuarios().then(function (resultado) {
+function enviar(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var tema = req.body.temaServer;
+    var titulo = req.body.tituloServer;
+    var texto = req.body.textoServer;
+    var fkUsuario = req.body.fkUsuarioServer;
+
+    // Faça as validações dos valores
+    if (tema == undefined) {
+        res.status(400).send("Seu tema está undefined!");
+    } else if (titulo == undefined) {
+        res.status(400).send("Sua titulo está undefined!");
+    } else if (texto == undefined) {
+        res.status(400).send("Sua texto está undefined!");
+    } else if (fkUsuario == undefined) {
+        res.status(400).send("Sua fkUsuario está undefined!");
+    }
+    else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        graficosModel.enviar(tema, titulo, texto, fkUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\n ja estou em postController !Houve um erro ao realizar o post! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function listarPosts(req, res) {
+  graficosModel.listarPosts().then(function (resultado) {
       if (resultado.length > 0) {
           res.status(200).json(resultado);
       } else {
@@ -102,13 +134,37 @@ function listarUsuarios(req, res) {
       }
   }).catch(function (erro) {
       console.log(erro);
-      console.log("Houve um erro ao buscar os usuarios: ", erro.sqlMessage);
+      console.log("Houve um erro ao buscar os posts: ", erro.sqlMessage);
       res.status(500).json(erro.sqlMessage);
   });
 }
 
+
+function listarMeusPosts(req, res) {
+  var idusuario = req.body.iduserServer;
+
+  if (idusuario == undefined) {
+          res.status(400).send("O ID está undefined!");
+  } else {
+      graficosModel.listarMeusPosts(idusuario).then(function (resultadoVerificar) {
+          console.log(`\nResultados encontrados: ${resultadoVerificar.length}`);
+          console.log(`Resultados: ${JSON.stringify(resultadoVerificar)}`); // transforma JSON em String
+          res.status(200).json(resultadoVerificar);
+  })
+        .catch(function (erro) {
+          console.log(erro);
+          console.log("\nHouve um erro ao verificar! Erro: ", erro.sqlMessage);
+          res.status(500).json(erro.sqlMessage);
+        });
+    }}
+
+
+// incrementar
+
 module.exports = {
   cadastrar,
   autenticar,
-  listarUsuarios,
+  enviar,
+  listarPosts,
+  listarMeusPosts
 };

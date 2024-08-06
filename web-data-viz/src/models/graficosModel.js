@@ -37,7 +37,7 @@ async function cadastrar(nome, email, senha, nasc, fkconhecimento, fkgenero, voc
     const idusuario = result[0].idusuario;
 
     var instrucaoSql03 = `
-        INSERT INTO PERFIL (apelido, resumo, gosto, sobre, fkusuario, fkimagem, fkvocaloid, fkatuacao) VALUES ('${apelido}', 'Escreva sua Bio aqui!', 'Fale um pouco dos seus gostos aqui!', 'Fale um pouco sobre o você', ${idusuario}, ${fkimagem}, ${vocaloid}, ${fkatuacao});
+        INSERT INTO PERFIL (apelido, resumo, gosto, sobre, fkusuario, fkimagem, fkvocaloid, fkatuacao) VALUES ('${apelido}', ${resumo}, ${gosto}, ${sobre}, ${idusuario}, ${fkimagem}, ${vocaloid}, ${fkatuacao});
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql03);
@@ -47,28 +47,56 @@ async function cadastrar(nome, email, senha, nasc, fkconhecimento, fkgenero, voc
 function autenticar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucaoSql = `
-        SELECT u.idusuario as idusuario, u.nome as nome, u.email as email, u.senha as senha, p.apelido, i.imagem FROM USUARIO as u 
-        join perfil as p on u.idusuario = p.fkusuario 
-        JOIN imagemperfil as i on p.fkimagem = i.idimagemperfil
-        WHERE email = '${email}' AND senha = '${senha}';
+        SELECT IDUSUARIO as idusuario, NOME as nome, EMAIL as email, SENHA as senha FROM USUARIO WHERE email = '${email}' AND senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function listarUsuarios() {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ")
+
+function enviar(tema, titulo, texto, fkUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", tema, titulo, texto, fkUsuario)
     var instrucaoSql = `
-    select * from usuario 
-    join perfil on usuario.idusuario = perfil.fkusuario 
-    join imagemperfil on perfil.fkimagem = imagemperfil.idimagemperfil;
+        insert into post (tema, titulo, texto, fkusuario) values 
+        ('${tema}','${titulo}','${texto}', ${fkUsuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+
+function listarPosts() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ")
+    var instrucaoSql = `
+    select * from post 
+    join usuario on usuario.idusuario = post.fkusuario 
+    join perfil on usuario.idusuario = perfil.fkusuario 
+    join imagemperfil on perfil.fkimagem = imagemperfil.idimagemperfil
+    order by post.datahora desc;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function listarMeusPosts(idusuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", idusuario)
+    var instrucaoSql = `
+    select * from post 
+    join usuario on usuario.idusuario = post.fkusuario 
+    join perfil on usuario.idusuario = perfil.fkusuario 
+    join imagemperfil on perfil.fkimagem = imagemperfil.idimagemperfil
+    where post.fkusuario = ${idusuario}
+    order by post.datahora desc
+    ;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
     autenticar,
-    cadastrar,
-    listarUsuarios,
+    cadastrar, 
+    enviar,
+    listarPosts,
+    listarMeusPosts
 };

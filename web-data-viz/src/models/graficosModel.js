@@ -1,85 +1,31 @@
-var database = require("../database/config")
-
-// Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
-async function cadastrar(nome, email, senha, nasc, fkconhecimento, fkgenero, vocaloid, apelido, resumo, gosto, sobre, fkimagem, fkatuacao) {
-    console.log(
-        `ACESSEI O USUARIO MODEL \n\n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():`, nome, email, senha
-    );
-
-    var inst00 = `
-        SELECT count(*) AS count FROM USUARIO WHERE email = '${email}'
-    `
-
-    console.log("Executando a instrução SQL: \n" + inst00);
-    const emailCheckResult = await database.executar(inst00);
-    const emailCount = emailCheckResult[0].count;
-    console.log(emailCheckResult[0].count)
-
-    if (emailCount > 0) {
-        console.error("Erro: Email já cadastrado.");
-        return;
-    }
-
-    var instrucaoSql01 = `
-        INSERT INTO USUARIO (nome, email, senha, nasc, fkconhecimento, fkgenero) VALUES ('${nome}', '${email}', '${senha}', '${nasc}', '${fkconhecimento}', '${fkgenero}');
-    `;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql01);
-    database.executar(instrucaoSql01)
-
-    // COALESCE para lidar com valores nulos
-    var instrucaoSql02 = `
-        SELECT COALESCE(MAX(idusuario)+1, 1) AS idusuario FROM USUARIO;
-    `;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql02);
-    const result = await database.executar(instrucaoSql02);
-    const idusuario = result[0].idusuario;
-
-    var instrucaoSql03 = `
-        INSERT INTO PERFIL (apelido, resumo, gosto, sobre, fkusuario, fkimagem, fkvocaloid, fkatuacao) VALUES ('${apelido}', ${resumo}, ${gosto}, ${sobre}, ${idusuario}, ${fkimagem}, ${vocaloid}, ${fkatuacao});
-    `;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql03);
-    return database.executar(instrucaoSql03);
-}
-
-function autenticar(email, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
-    var instrucaoSql = `
-        SELECT IDUSUARIO as idusuario, NOME as nome, EMAIL as email, SENHA as senha FROM USUARIO WHERE email = '${email}' AND senha = '${senha}';
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
-
+var database = require("../database/config");
 
 function enviar(tema, titulo, texto, fkUsuario) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", tema, titulo, texto, fkUsuario)
-    var instrucaoSql = `
+  // console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", tema, titulo, texto, fkUsuario)
+  var instrucaoSql = `
         insert into post (tema, titulo, texto, fkusuario) values 
         ('${tema}','${titulo}','${texto}', ${fkUsuario});
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  // console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function listarPosts() {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ")
-    var instrucaoSql = `
+  // console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ")
+  var instrucaoSql = `
     select * from post 
     join usuario on usuario.idusuario = post.fkusuario 
     join perfil on usuario.idusuario = perfil.fkusuario 
     join imagemperfil on perfil.fkimagem = imagemperfil.idimagemperfil
     order by post.datahora desc;
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  // console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function listarMeusPosts(idusuario) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", idusuario)
-    var instrucaoSql = `
+  // console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", idusuario)
+  var instrucaoSql = `
     select * from post 
     join usuario on usuario.idusuario = post.fkusuario 
     join perfil on usuario.idusuario = perfil.fkusuario 
@@ -88,15 +34,54 @@ function listarMeusPosts(idusuario) {
     order by post.datahora desc
     ;
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  // console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
+function postsDia() {
+  var instrucaoSql = `select date_format(datahora, "%d/%m/%Y") as dia, count(idpost) as qtd from post group by date_format(datahora, "%d/%m/%Y") order by date_format(datahora, "%d/%m/%Y");`;
+  // console.log(`(graficosModel.js).postsData(): ${instrucaoSql}`);
+  return database.executar(instrucaoSql);
+}
+
+function postsDiaUsuario(id) {
+  var instrucaoSql = `select date_format(datahora, "%d/%m/%Y") as dia, count(idpost) as qtd from post where fkusuario = ${id} group by date_format(datahora, "%d/%m/%Y") order by date_format(datahora, "%d/%m/%Y");`;
+  // console.log(`(graficosModel.js).postsDiaUsuario(): ${instrucaoSql}`);
+  return database.executar(instrucaoSql);
+}
+
+function pontuacaoDiaUsuario(id) {
+  var instrucaoSql = `select date_format(datahora, "%d/%m/%Y") as "dia", sum(pontuacao) as "qtd" from pontuacao where fkusuario = ${id} group by date_format(datahora, "%d/%m/%Y") order by date_format(datahora, "%d/%m/%Y");`;
+  // console.log(`(graficosModel.js).pontuacaoDiaUsuario(): ${instrucaoSql}`);
+  return database.executar(instrucaoSql);
+}
+
+function jogosDia() {
+  var instrucaoSql = `select date_format(datahora, "%d/%m/%Y") as dia, count(idpontuacao) as qtd from pontuacao group by date_format(datahora, "%d/%m/%Y") order by date_format(datahora, "%d/%m/%Y");`;
+  // console.log(`(graficosModel.js).postsData(): ${instrucaoSql}`);
+  return database.executar(instrucaoSql);
+}
+
+function popularidadeVocaloid() {
+  var instrucaoSql = `select nomeVocaloid, count(fkvocaloid) as qtd from perfil join vocaloid on vocaloid.idvocaloid = perfil.fkvocaloid group by nomeVocaloid;`;
+  // console.log(`(graficosModel.js).postsData(): ${instrucaoSql}`);
+  return database.executar(instrucaoSql);
+}
+
+function popularidadeTema() {
+  var instrucaoSql = `select tema, count(idpost) as qtd from post group by tema;`;
+  // console.log(`(graficosModel.js).postsData(): ${instrucaoSql}`);
+  return database.executar(instrucaoSql);
+}
 
 module.exports = {
-    autenticar,
-    cadastrar, 
-    enviar,
-    listarPosts,
-    listarMeusPosts
+  enviar,
+  listarPosts,
+  listarMeusPosts,
+  postsDia,
+  jogosDia,
+  postsDiaUsuario,
+  pontuacaoDiaUsuario,
+  popularidadeVocaloid,
+  popularidadeTema,
 };

@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="shortcut icon" href="../assets/imagem/leek.png" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>39Talk | Graficos</title>
 
-<link rel="stylesheet" href="./../css/navbarSidebar.css">
-    <link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/navbarSidebar.css" />
+    <link rel="stylesheet" href="./../css/dashboards.css" />
     <link rel="stylesheet" href="../testes/graficos.css" />
     <script src="../js/sessao.js"></script>
     <!-- <script src="./../js/alerta.js"></script> -->
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
 
     <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -25,29 +22,28 @@
 
     <!--FONT AWESOME-->
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
-</head>
+  </head>
 
-<!-- <body onload=" atualizarFeed()"> -->
+  <!-- <body onload=" atualizarFeed()"> -->
 
-<body onload="carregarSessao(),pegarDados()">
-
-        <div class="menuToggle"></div>
+  <body onload="carregarSessao(),pegarDados()">
+    <div class="menuToggle"></div>
     <div class="sidebar">
       <ul>
-        <li class="logo" style="--bg: #33CCBA;">
+        <li class="logo" style="--bg: #33ccba">
           <a href="#">
             <div class="icon"><ion-icon name="wifi-outline"></ion-icon></div>
             <div class="text">39Talk</div>
           </a>
         </li>
         <div class="Menulist">
-          <li style="--bg:  #3367CD  ;">
+          <li style="--bg: #3367cd">
             <a href="./pg1_home.html">
               <div class="icon"><ion-icon name="home-outline"></ion-icon></div>
               <div class="text">Home</div>
             </a>
           </li>
-          <li style="--bg:  #DE4444  ;">
+          <li style="--bg: #de4444">
             <a href="./pg2_perfil.html">
               <div class="icon">
                 <ion-icon name="person-outline"></ion-icon>
@@ -55,15 +51,7 @@
               <div class="text">Perfil</div>
             </a>
           </li>
-          <li style="--bg:#fdc600 ;">
-            <a href="./pg3_chat.html">
-              <div class="icon">
-                <ion-icon name="chatbox-outline"></ion-icon>
-              </div>
-              <div class="text">Chat</div>
-            </a>
-          </li>
-          <li style="--bg:#fdc600 ;">
+          <li style="--bg: #fdc600">
             <a href="./pg4_post.html">
               <div class="icon">
                 <ion-icon name="chatbox-outline"></ion-icon>
@@ -71,7 +59,7 @@
               <div class="text">Posts</div>
             </a>
           </li>
-          <li style="--bg:  #FFEE12;">
+          <li style="--bg: #ffee12">
             <a href="./pg5_jogos.html">
               <div class="icon">
                 <ion-icon name="game-controller-outline"></ion-icon>
@@ -79,7 +67,7 @@
               <div class="text">Jogos</div>
             </a>
           </li>
-          <li style="--bg: #FFBACC;" class="active">
+          <li style="--bg: #ffbacc" class="active">
             <a href="./pg6_graficos.html">
               <div class="icon">
                 <ion-icon name="bar-chart-outline"></ion-icon>
@@ -89,20 +77,17 @@
           </li>
         </div>
         <div class="bottom">
-          <li style="--bg: #333;">
+          <li style="--bg: #333">
             <a href="#">
               <div class="icon">
                 <div class="imgBx">
-                  <img
-                    id="imgUsuarioSessao"
-                    src="https://icons.veryicon.com/png/o/miscellaneous/merchant-pc20/system-settings-9999-20px.png"
-                  />
+                  <img id="imgUsuarioSessao" src="https://icons.veryicon.com/png/o/miscellaneous/merchant-pc20/system-settings-9999-20px.png" />
                 </div>
               </div>
               <div class="text" id="apelidoUsuarioSessao"></div>
             </a>
           </li>
-          <li style="--bg: #333;">
+          <li style="--bg: #333">
             <a href="../index.html">
               <div class="icon">
                 <ion-icon name="log-out-outline"></ion-icon>
@@ -116,70 +101,110 @@
 
     <div class="centralizar">
       <div class="content">
-
         <main class="main-content">
-
           <section class="infouser">
             <div class="profile">
-              <div class="imagem"><img src="../assets/icon/kaitoicon.jpg" alt=""></div>
-              <div class="informacao">informacao</div>
-            </div>
-          
-            
-            <div class="pontuacoes">
-              <div id="posts">card qtd post</div>
-              <div id="velha">card  velha</div>
-              <div id="memoria">card pnt memoria</div>
-            </div>
-              
-            <div class="graficoperfil">
-              <div id="graficoperfil">grafico do perfil</div>
+              <div class="imagem"><img src="../assets/icon/kaitoicon.jpg" alt="" /></div>
+              <div class="informacao">
+                <!-- informacao do perfil do usuario -->
+                <p>Nome:</p>
+                <h2 id="nomeUsuarioDisplay">Nome</h2>
+                <p>E-mail:</p>
+                <h2 id="emailUsuarioDisplay">Email</h2>
+                <p>Data de nascimento:</p>
+                <h2 id="nascimentoUsuarioDisplay">Nascimento</h2>
+              </div>
             </div>
 
+            <div class="pontuacoes">
+              <div id="posts">
+                <div id="graficoPostsDiaUsuario">
+                  <!-- grafico quantidade de posts do usuário por dia -->
+                  <canvas id="canvasPostsDiaUsuario"></canvas>
+                </div>
+                <!-- card qtd post do usuario -->
+                 <div class="graficoperfil">
+                   <canvas id="postsUsuario"></canvas>
+                 </div>
+                <!-- Quantidade de posts por dia que o usuario fez -->
+                <!-- Quantos post o usuario fez -->
+              </div>
+            </div>
+
+           
+            <div class="graficoperfil">
+              <div id="graficoPontuacaoDiaUsuario">
+                <!-- grafico soma das pontuações do usuário -->
+                <canvas id="canvasPontuacaoDiaUsuario"></canvas>
+              </div>
+              <!-- Quantidade da soma da pontuação que o usuario fez por dia-->
+            </div>
           </section>
 
           <section class="percentuais">
-            <div id="genero">percentual genero
+            <div id="genero">
+              <!-- percentual genero -->
               <canvas id="generosUsuarios"></canvas>
+              <!-- Grafico de percentual de genero entre os usuarios cadastrados -->
             </div>
-            <div id="como">percentual como conheceu
+            <div id="como">
+              <!-- percentual como conheceu -->
               <canvas id="comoConheceu"></canvas>
+              <!-- Grafico de percentual de como os usuarios conheceram vocaloid eentre os usuarios cadastrados -->
             </div>
-            <div id="atuacao">percentual atuacao
+            <div id="atuacao">
+              <!-- percentual atuacao -->
               <canvas id="atuacaoUsuario"></canvas>
+              <!-- Grafico de percentual da atuação os usuarios conheceram vocaloid eentre os usuarios cadastrados -->
             </div>
           </section>
-          
+
           <section class="posts">
-            <div id="graficolinhapost">grafico linha post</div>
-            <div id="graficopizzapost">grafico pizza post</div>
+            <div id="graficoPostsDia">
+              <!-- <h1>grafico posts por dia geral</h1> -->
+              <canvas id="canvasPostsDia"></canvas>
+              <!-- Grafico de quantidade de posts por dia de todos os usuarios cadastrados -->
+            </div>
+
+            <div id="graficoBarraJogos">
+              <!-- <h1>grafico jogos jogados por dia</h1> -->
+              <canvas id="canvasBarraJogos"></canvas>
+              <!-- Grafico de quantidade de jogos jogados por dia de todos os usuarios cadastrados -->
+            </div>
           </section>
 
           <section class="ranking">
-
-<div id="jogomemoria">
-  <div id="graficorankmemoria">grafico rank memoria</div>
-  <div id="mediapontuacaomedia">card media pontuacao</div>
-</div>
-
-<div id="popularidade">
-  <div id="popularidadeVocaloid">Grafico de barra vocaloid</div>
-  <div id="popularidadePost">grafico de barra post</div>
-</div>
+            <div id="popularidade">
+              
+                <canvas id="canvasPopularidadeTemas"></canvas>
+                <!-- Grafico de barra que mostra a popularidade das categorias de posts entre todos os usuarios cadastrados -->
+              
+              </div>
+              
+                 <div id="popularidadeVocaloid"></div>
+                <canvas id="canvasPopularidadeVocaloid"></canvas>
+                <!-- Grafico de barra que mostra a popularidade dos vocaloids entre todos os usuarios cadastrados -->
+              </div>
+              
+             
+            </div>
           </section>
-
         </main>
       </div>
     </div>
-
-</body>
-
+  </body>
 </html>
 
 <script>
+  const idUser = sessionStorage.getItem("ID_USUARIO");
+
+  const nomeUsuarioDisplay = document.querySelector("#nomeUsuarioDisplay");
+  const emailUsuarioDisplay = document.querySelector("#emailUsuarioDisplay");
+  const nascimentoUsuarioDisplay = document.querySelector("#nascimentoUsuarioDisplay");
+
   var genMasculino = 0;
   var genFeminino = 0;
-  var genOutro = 0; 
+  var genOutro = 0;
 
   var CCAmigos = 0;
   var CCInternet = 0;
@@ -187,461 +212,894 @@
   var CCJogos = 0;
   var CCTrabalho = 0;
   var CCOutro = 0;
-  function pegarDados(){
-    fetch("/usuarios/listarUsuarios")
-    .then(function (resposta) {
+
+  // começo da criação variaveis para o grafico de pizza de atuação dos usuarios
+  var faList = 0;
+  var conteudoList = 0;
+  var musicaList = 0;
+  var jogadorList = 0;
+  var artistaList = 0;
+  var cosplayerList = 0;
+  var outroList = 0;
+  // termino da criação variaveis para o grafico de pizza de atuação dos usuarios
+
+  // start postsUsuario:
+  function plotarPostsUsuario(dados) {
+    var postsUsuario = document.getElementById("postsUsuario").getContext("2d");
+    postsUsuario.canvas.parentNode.style.width = "300px";
+    postsUsuario.canvas.parentNode.style.height = "300px";
+    postsUsuario.canvas.width = 1;
+    postsUsuario.canvas.height = 1;
+
+    var VOCALOIDlist = 0;
+    var MUSICAlist = 0;
+    var CRYPTONlist = 0;
+    var MIKUlist = 0;
+    var KAITOlist = 0;
+    var MEIKOlist = 0;
+    var LUKAlist = 0;
+    var LENlist = 0;
+    var RINlist = 0;
+    var PROSEKAIlist = 0;
+    var OUTROSlist = 0;
+
+    for (let i = 0; i < dados.length; i++) {
+      var post = dados[i];
+      var tempo = post.datahora;
+      var time = formatData(tempo);
+      var tema = post.tema;
+
+      if (tema == "VOCALOID") {
+        VOCALOIDlist++;
+      } else if (tema == "MUSICA") {
+        MUSICAlist++;
+      } else if (tema == "CRYPTON") {
+        CRYPTONlist++;
+      } else if (tema == "MIKU") {
+        MIKUlist++;
+      } else if (tema == "KAITO") {
+        KAITOlist++;
+      } else if (tema == "MEIKO") {
+        MEIKOlist++;
+      } else if (tema == "LUKA") {
+        LUKAlist++;
+      } else if (tema == "LEN") {
+        LENlist++;
+      } else if (tema == "RIN") {
+        RINlist++;
+      } else if (tema == "PROSEKAI") {
+        PROSEKAIlist++;
+      } else {
+        OUTROSlist++;
+      }
+    }
+
+    var graficogenerosPref = new Chart(postsUsuario, {
+      type: "doughnut",
+      data: {
+        labels: ["VOCALOID", "MUSICA", "CRYPTON", "MIKU", "KAITO", "MEIKO", "LUKA", "LEN", "RIN", "PROSEKAI", "OUTROS"],
+        datasets: [
+          {
+            data: [VOCALOIDlist, MUSICAlist, CRYPTONlist, MIKUlist, KAITOlist, MEIKOlist, LUKAlist, LENlist, RINlist, PROSEKAIlist, OUTROSlist],
+            backgroundColor: ["#3367cd", "#de4444", "#fdc600", "#ffee12", "#ffbacc", "#03A5AB", "#9864fe", "#c383ff", "#4125fc"],
+            label: "Posts Feitos",
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          title: {
+            color: "#333",
+            display: true,
+            text: "Posts feitos",
+            font: {
+              size: 31,
+            },
+            padding: 30,
+          },
+          legend: {
+            display: false,
+            labels: {
+              color: "#f0cf95",
+              font: {
+                size: 15,
+              },
+              padding: 40,
+            },
+            position: "bottom",
+          },
+        },
+      },
+    });
+  }
+
+  function pegarPostsUsuario() {
+    fetch("/post/listarMeusPosts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        iduserServer: idUser,
+      }),
+    })
+      .then((resposta) => {
+        if (resposta.ok) {
+          resposta.json().then((dados) => {
+            plotarPostsUsuario(dados);
+          });
+        } else {
+          resposta.text().then((texto) => {
+            throw "(Servidor) " + texto;
+          });
+        }
+      })
+      .catch((erro) => {
+        console.log("Erro:", erro);
+      });
+  }
+  // end postsUsuario;
+
+  // start postsDiaUsuario:
+  function plotarPostsDiaUsuario(dados) {
+    var canvasLinhasPosts = document.getElementById("canvasPostsDiaUsuario").getContext("2d");
+
+    var tempos = [];
+    var qtds = [];
+
+    for (let i = 0; i < dados.length; i++) {
+      tempos.push(dados[i].dia);
+      qtds.push(dados[i].qtd);
+    }
+
+    var graficoLinhasPosts = new Chart(canvasLinhasPosts, {
+      type: "bar",
+      data: {
+        labels: tempos,
+        datasets: [
+          {
+            label: "Quantidade posts",
+            data: qtds,
+            borderWidth: 2,
+            backgroundColor: ["#3367cd", "#33ccba"],
+            borderColor: ["#ccc", "#ccc"],
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Quantidade de posts do usuário por dia",
+            font: {
+            size: 24, 
+          },
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Data",
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: "Quantidade",
+            },
+            ticks: {
+              stepSize: 1,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  function pegarPostsDiaUsuario() {
+    fetch("/graficos/postsDiaUsuario", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        iduserServer: sessionStorage.getItem("ID_USUARIO"),
+      }),
+    })
+      .then((resposta) => {
+        if (resposta.ok) {
+          resposta.json().then((dados) => {
+            plotarPostsDiaUsuario(dados);
+          });
+        } else {
+          resposta.text().then((texto) => {
+            throw "(Servidor) " + texto;
+          });
+        }
+      })
+      .catch((erro) => {
+        console.log("Erro:", erro);
+      });
+  }
+  // end postsDiaUsuario;
+
+  // start popularidadeVocaloid
+  function plotarPopularidadeVocaloid(dados) {
+    var canvasLinhasPosts = document.getElementById("canvasPopularidadeVocaloid").getContext("2d");
+
+    var nomesVocaloid = [];
+    var qtds = [];
+
+    for (let i = 0; i < dados.length; i++) {
+      nomesVocaloid.push(dados[i].nomeVocaloid);
+      qtds.push(dados[i].qtd);
+    }
+
+    var graficoLinhasPosts = new Chart(canvasLinhasPosts, {
+      type: "bar",
+      data: {
+        labels: nomesVocaloid,
+        datasets: [
+          {
+            label: "Pontuação de popularidade",
+            data: qtds,
+            borderWidth: 2,
+            backgroundColor: ["#3367cd", "#33ccba"],
+            borderColor: ["#ccc", "#ccc"],
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Popularidade da vocaloid",
+            font: {
+            size: 24, 
+          },
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Vocaloid",
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: "Popularidade",
+            },
+            ticks: {
+              stepSize: 1,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  function pegarPopularidadeVocaloid() {
+    fetch("/graficos/popularidadeVocaloid", {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resposta) => {
+        if (resposta.ok) {
+          resposta.json().then((dados) => {
+            plotarPopularidadeVocaloid(dados);
+          });
+        } else {
+          resposta.text().then((texto) => {
+            throw "(Servidor) " + texto;
+          });
+        }
+      })
+      .catch((erro) => {
+        console.log("Erro:", erro);
+      });
+  }
+  // end popularidadeVocaloid;
+
+  // start popularidadeTemas
+  function plotarPopularidadeTemas(dados) {
+    var canvasLinhasPosts = document.getElementById("canvasPopularidadeTemas").getContext("2d");
+
+    var temas = [];
+    var qtds = [];
+
+    for (let i = 0; i < dados.length; i++) {
+      temas.push(dados[i].tema);
+      qtds.push(dados[i].qtd);
+    }
+
+    var graficoLinhasPosts = new Chart(canvasLinhasPosts, {
+      type: "bar",
+      data: {
+        labels: temas,
+        datasets: [
+          {
+            label: "Pontuação de popularidade",
+            data: qtds,
+            borderWidth: 2,
+            backgroundColor: ["#3367cd", "#33ccba"],
+            borderColor: ["#ccc", "#ccc"],
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Popularidade dos temas",
+            font: {
+            size: 24, 
+          },
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Tema",
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: "Popularidade",
+            },
+            ticks: {
+              stepSize: 1,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  function pegarPopularidadeTemas() {
+    fetch("/graficos/popularidadeTema", {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resposta) => {
+        if (resposta.ok) {
+          resposta.json().then((dados) => {
+            plotarPopularidadeTemas(dados);
+          });
+        } else {
+          resposta.text().then((texto) => {
+            throw "(Servidor) " + texto;
+          });
+        }
+      })
+      .catch((erro) => {
+        console.log("Erro:", erro);
+      });
+  }
+  // end popularidadeTemas;
+
+  // start pontuacaoDiaUsuario:
+  function plotarPontuacaoDiaUsuario(dados) {
+    var canvasLinhasPosts = document.getElementById("canvasPontuacaoDiaUsuario").getContext("2d");
+
+    var tempos = [];
+    var qtds = [];
+
+    for (let i = 0; i < dados.length; i++) {
+      tempos.push(dados[i].dia);
+      qtds.push(dados[i].qtd);
+    }
+
+    var graficoLinhasPosts = new Chart(canvasLinhasPosts, {
+      type: "bar",
+      data: {
+        labels: tempos,
+        datasets: [
+          {
+            label: "Soma das pontuações do usuário por dia",
+            data: qtds,
+            borderWidth: 2,
+            backgroundColor: ["#3367cd", "#33ccba"],
+            borderColor: ["#ccc", "#ccc"],
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Soma das pontuações do usuário por dia",
+            font: {
+            size: 24, 
+          },
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Data",
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: "Pontuação",
+            },
+            ticks: {
+              stepSize: 50,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  function pegarPontuacaoDiaUsuario() {
+    fetch("/graficos/pontuacaoDiaUsuario", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        iduserServer: sessionStorage.getItem("ID_USUARIO"),
+      }),
+    })
+      .then((resposta) => {
+        if (resposta.ok) {
+          resposta.json().then((dados) => {
+            plotarPontuacaoDiaUsuario(dados);
+          });
+        } else {
+          resposta.text().then((texto) => {
+            throw "(Servidor) " + texto;
+          });
+        }
+      })
+      .catch((erro) => {
+        console.log("Erro:", erro);
+      });
+  }
+  // end pontuacaoDiaUsuario;
+
+  // start postsDia:
+  function plotarPostsDia(dados) {
+    var canvasLinhasPosts = document.getElementById("canvasPostsDia").getContext("2d");
+
+    var tempos = [];
+    var qtds = [];
+
+    for (let i = 0; i < dados.length; i++) {
+      tempos.push(dados[i].dia);
+      qtds.push(dados[i].qtd);
+    }
+
+    var graficoLinhasPosts = new Chart(canvasLinhasPosts, {
+      type: "bar",
+      data: {
+        labels: tempos,
+        datasets: [
+          {
+            label: "Quantidade de posts geral",
+            data: qtds,
+            borderWidth: 2,
+            backgroundColor: ["#3367cd", "#33ccba"],
+            borderColor: ["#ccc", "#ccc"],
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Quantidade de posts geral",
+            font: {
+            size: 24, 
+          },
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Data",
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: "Quantidade",
+            },
+            ticks: {
+              stepSize: 1,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  function pegarPostsDia() {
+    fetch("/graficos/postsDia", {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resposta) => {
+        if (resposta.ok) {
+          resposta.json().then((dados) => {
+            plotarPostsDia(dados);
+          });
+        } else {
+          resposta.text().then((texto) => {
+            throw "(Servidor) " + texto;
+          });
+        }
+      })
+      .catch((erro) => {
+        console.log("Erro:", erro);
+      });
+  }
+  // end postsDia;
+
+  function pegarDadosPerfil() {
+    fetch("/perfil/listarPerfis").then(function (resposta) {
       if (resposta.ok) {
         if (resposta.status == 204) {
-          console.log('Nenhum resultado encontrado!!');
+          console.log("Nenhum resultado encontrado!!");
           throw "Nenhum resultado encontrado!!";
         }
 
         resposta.json().then(function (resposta) {
-          console.log("Dados recebidos: ", JSON.stringify(resposta));
-          var ContadorAuxiliar = 0;
+          // console.log("Dados recebidos: ", JSON.stringify(resposta));
 
           for (let i = 0; i < resposta.length; i++) {
-            var usuario = resposta[i];
-              if(usuario.fkgenero == 1){
-                genMasculino ++
-              }else if(usuario.fkgenero == 2){
-                genFeminino ++;
-              }else{
-                genOutro ++;
-              }
-
-              if(usuario.fkconhecimento == 1){
-                CCAmigos ++;
-              }else if(usuario.fkconhecimento == 2){
-                CCInternet ++;
-              }else if(usuario.fkconhecimento == 3){
-                CCFamiliares ++;
-              }else if(usuario.fkconhecimento == 4){
-                CCJogos ++;
-              }else if(usuario.fkconhecimento == 5){
-                CCTrabalho ++;
-              }else if(usuario.fkconhecimento == 6){
-                CCOutro ++;
-              }
-
-
+            var pefil = resposta[i];
+            if (pefil.fkatuacao == 1) {
+              faList++;
+            } else if (pefil.fkatuacao == 2) {
+              conteudoList++;
+            } else if (pefil.fkatuacao == 3) {
+              musicaList++;
+            } else if (pefil.fkatuacao == 4) {
+              jogadorList++;
+            } else if (pefil.fkatuacao == 5) {
+              artistaList++;
+            } else if (pefil.fkatuacao == 6) {
+              cosplayerList++;
+            } else if (pefil.fkatuacao == 7) {
+              outroList++;
+            }
           }
-          plotarGraficos()
 
+          plotarGraficos();
         });
-      } else {
-        throw "Houve um erro na API!";
       }
-    })
-    .catch(function (resposta) {
-      console.error(resposta);
     });
   }
 
-  function plotarGraficos(){
+  function pegarDados() {
+    fetch("/usuarios/verificar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        iduserServer: idUser,
+      }),
+    })
+      .then(function (resposta) {
+        resposta.json().then(function (resposta) {
+          console.log(resposta);
+          perfil = resposta[0];
+          nomeUsuarioDisplay.innerHTML = perfil.nome;
+          emailUsuarioDisplay.innerHTML = perfil.email;
+          nascimentoUsuarioDisplay.innerHTML = perfil.nasc;
+        });
+      })
+      .catch(function (resposta) {
+        "";
+        console.log(`#ERRO: ${resposta}`);
+      });
+    pegarPostsDia();
+    pegarPostsUsuario();
+    pegarPopularidadeVocaloid();
+    pegarPopularidadeTemas();
+    fetch("/usuarios/listarUsuarios")
+      .then(function (resposta) {
+        if (resposta.ok) {
+          if (resposta.status == 204) {
+            console.log("Nenhum resultado encontrado!!");
+            throw "Nenhum resultado encontrado!!";
+          }
 
+          resposta.json().then(function (resposta) {
+            // console.log("Dados recebidos: ", JSON.stringify(resposta));
+            var ContadorAuxiliar = 0;
+
+            for (let i = 0; i < resposta.length; i++) {
+              var usuario = resposta[i];
+              if (usuario.fkgenero == 1) {
+                genMasculino++;
+              } else if (usuario.fkgenero == 2) {
+                genFeminino++;
+              } else {
+                genOutro++;
+              }
+
+              if (usuario.fkconhecimento == 1) {
+                CCAmigos++;
+              } else if (usuario.fkconhecimento == 2) {
+                CCInternet++;
+              } else if (usuario.fkconhecimento == 3) {
+                CCFamiliares++;
+              } else if (usuario.fkconhecimento == 4) {
+                CCJogos++;
+              } else if (usuario.fkconhecimento == 5) {
+                CCTrabalho++;
+              } else if (usuario.fkconhecimento == 6) {
+                CCOutro++;
+              }
+            }
+
+            pegarDadosPerfil();
+          });
+        } else {
+          throw "Houve um erro na API!";
+        }
+      })
+      .catch(function (resposta) {
+        console.error(resposta);
+      });
+  }
+
+  function plotarGraficos() {
     var optionsLegend = {
       display: false,
       labels: {
-        color: '#f0cf95',
+        color: "#f0cf95",
         font: {
           size: 15,
         },
-        padding: 40
+        padding: 40,
       },
-      position: 'bottom'
-    }
+      position: "bottom",
+    };
 
-
-    var divGenerosUsuarios = document.getElementById('generosUsuarios').getContext('2d');
-    divGenerosUsuarios.canvas.parentNode.style.width = '500px';
-    divGenerosUsuarios.canvas.parentNode.style.height = '500px';
+    var divGenerosUsuarios = document.getElementById("generosUsuarios").getContext("2d");
+    divGenerosUsuarios.canvas.parentNode.style.width = "500px";
+    divGenerosUsuarios.canvas.parentNode.style.height = "500px";
     divGenerosUsuarios.canvas.width = 1;
     divGenerosUsuarios.canvas.height = 1;
-  
-    
-  
-    var graficogenerosPref = new Chart(
-      divGenerosUsuarios,
-      {
-        type: 'doughnut',
-        data: {
-          labels: ['Masculino', 'Feminino', 'Outros'],
-          datasets: [{
-            data: [genMasculino,genFeminino,genOutro],
-            backgroundColor: [
-              '#33ccba',
-              '#1506fa',
-              '#000000',
-            ],
-            label: 'Gênero dos Usuários'
-          }]
-        },
-        options: {
-          plugins: {
-            title: {
-              color: '#1506fa',
-              display: true,
-              text: 'Gênero dos usuários',
-              font: {
-                size: 31
-              },
-              padding: 30
-            },
-            legend: optionsLegend
-          }
-        }
-      }
-    )
 
-    var divComoConheceu = document.getElementById('comoConheceu').getContext('2d');
-    divComoConheceu.canvas.parentNode.style.width = '500px';
-    divComoConheceu.canvas.parentNode.style.height = '500px';
+    var graficogenerosPref = new Chart(divGenerosUsuarios, {
+      type: "doughnut",
+      data: {
+        labels: ["Masculino", "Feminino", "Outros"],
+        datasets: [
+          {
+            data: [genMasculino, genFeminino, genOutro],
+            backgroundColor: ["#3367cd", "#de4444", "#03A5AB"],
+            label: "Gênero dos Usuários",
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          title: {
+            color: "#333",
+            display: true,
+            text: "Gênero dos usuários",
+            font: {
+              size: 24,
+            },
+            padding: 30,
+          },
+          legend: optionsLegend,
+        },
+      },
+    });
+
+    var divComoConheceu = document.getElementById("comoConheceu").getContext("2d");
+    divComoConheceu.canvas.parentNode.style.width = "500px";
+    divComoConheceu.canvas.parentNode.style.height = "500px";
     divComoConheceu.canvas.width = 1;
     divComoConheceu.canvas.height = 1;
-  
 
-    var graficoComoConheceu = new Chart(
-      divComoConheceu,
-      {
-        type: 'doughnut',
-        data: {
-          labels: ['amigos','internet','familiares','jogos','trabalho','outro'],
-          datasets: [{
+    var graficoComoConheceu = new Chart(divComoConheceu, {
+      type: "doughnut",
+      data: {
+        labels: ["amigos", "internet", "familiares", "jogos", "trabalho", "outro"],
+        datasets: [
+          {
             data: [CCAmigos, CCInternet, CCFamiliares, CCJogos, CCTrabalho, CCOutro],
-            backgroundColor: [
-            '#33ccba',
-            '#1506fa',
-            '#6c45fd',
-            '#000000',
-            '#9864fe',
-            '#c383ff',
-            ],
-            label: 'Como Conheceu'
-          }]
-        },
-        options: {
-          plugins: {
-            title: {
-              color: '#1506fa',
-              display: true,
-              text: 'Como Conheceu',
-              font: {
-                size: 31
-              },
-              padding: 30
+            backgroundColor: ["#3367cd", "#de4444", "#fdc600", "#ffee12", "#ffbacc", "#03A5AB"],
+            label: "Como Conheceu",
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          title: {
+            color: "#333",
+            display: true,
+            text: "Como conheceu VOCALOID",
+            font: {
+              size: 24,
             },
-            legend: optionsLegend
-          }
-        }
-      }
-    )
+            padding: 30,
+          },
+          legend: optionsLegend,
+        },
+      },
+    });
 
-    var divatuacaoUsuario = document.getElementById('atuacaoUsuario').getContext('2d');
-    divatuacaoUsuario.canvas.parentNode.style.width = '500px';
-    divatuacaoUsuario.canvas.parentNode.style.height = '500px';
+    var divatuacaoUsuario = document.getElementById("atuacaoUsuario").getContext("2d");
+    divatuacaoUsuario.canvas.parentNode.style.width = "500px";
+    divatuacaoUsuario.canvas.parentNode.style.height = "500px";
     divatuacaoUsuario.canvas.width = 1;
     divatuacaoUsuario.canvas.height = 1;
-  
-    
-  
-    var graficoAtuacaoUsuario = new Chart(
-      divatuacaoUsuario,
-      {
-        type: 'doughnut',
-        data: {
-          labels: ['Fã','Produto','Produtor','Jogador','Artista','Cosplayer','Outro'],
-          datasets: [{
-            data: [20,27,2,21,12,6,40],
-            backgroundColor: [
-            '#000000',
-            '#33ccba',
-            '#1506fa',
-            '#6c45fd',
-            '#9864fe',
-            '#c383ff',
-            '#4125fc',
-            ],
-            label: 'Atuação do Usuário'
-          }]
-        },
-        options: {
-          plugins: {
-            title: {
-              color: '#1506fa',
-              display: true,
-              text: 'Atuação do Usuário',
-              font: {
-                size: 31
-              },
-              padding: 30
+
+    var graficoAtuacaoUsuario = new Chart(divatuacaoUsuario, {
+      type: "doughnut",
+      data: {
+        labels: ["Fã", "Produtor de conteúdo", "Produtor de música", "Jogador", "Artista", "Cosplayer", "Outro"],
+        datasets: [
+          {
+            data: [faList, conteudoList, musicaList, jogadorList, artistaList, cosplayerList, outroList],
+            backgroundColor: ["#3367cd", "#de4444", "#fdc600", "#ffee12", "#ffbacc", "#03A5AB", "#4125fc"],
+            label: "Atuação do Usuário",
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          title: {
+            color: "#333",
+            display: true,
+            text: "Atuação do usuário no fandom",
+            font: {
+              size: 24,
             },
-            legend: optionsLegend
-          }
+            padding: 30,
+          },
+          legend: optionsLegend,
+        },
+      },
+    });
+
+    pegarPostsDiaUsuario();
+    pegarPontuacaoDiaUsuario();
+    pegarJogosDia();
+  }
+
+  function plotarJogosDia(dados) {
+    var canvasBarraJogos = document.getElementById("canvasBarraJogos").getContext("2d");
+
+    var tempos = [];
+    var qtds = [];
+
+    for (let i = 0; i < dados.length; i++) {
+      tempos.push(dados[i].dia);
+      qtds.push(dados[i].qtd);
+    }
+
+    var graficoBarraJogos = new Chart(canvasBarraJogos, {
+      type: "bar",
+      data: {
+        labels: tempos,
+        datasets: [
+          {
+            label: "Quantidade de jogos",
+            data: qtds,
+            borderWidth: 2,
+            backgroundColor: ["#3367cd", "#33ccba"],
+            borderColor: ["#ccc", "#ccc"],
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Quantidade de jogos jogados por dia",
+            font: {
+            size: 24, 
+          },
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Data",
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: "Quantidade",
+            },
+            ticks: {
+              stepSize: 1,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  function pegarJogosDia() {
+    fetch("/graficos/jogosDia", {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resposta) => {
+        if (resposta.ok) {
+          resposta.json().then((dados) => {
+            plotarJogosDia(dados);
+          });
+        } else {
+          resposta.text().then((texto) => {
+            throw "(Servidor) " + texto;
+          });
         }
-      }
-    )
-   }
-//     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+      })
+      .catch((erro) => {
+        console.log("Erro:", erro);
+      });
+  }
 
-//     let proximaAtualizacao;
+  function formatData(isoDate) {
+    const date = new Date(isoDate);
 
-//     window.onload = exibirAquariosDoUsuario();
+    // Array com os nomes dos meses
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-//     function exibirAquariosDoUsuario() {
-//         var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-//         aquarios.forEach(item => {
-//             document.getElementById("btnAquario").innerHTML += `
-//             <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
-//             `
+    // Obtém os componentes da data
+    const month = months[date.getUTCMonth()];
+    const year = date.getUTCFullYear();
+    let hours = date.getUTCHours();
+    const minutes = date.getUTCMinutes();
 
-//             document.getElementById("graficos").innerHTML += `
-//                 <div id="grafico${item.id}" class="display-none">
-//                     <h3 class="tituloGraficos">
-//                         <span id="tituloAquario${item.id}">${item.descricao}</span>
-//                     </h3>
-//                     <div class="graph">
-//                         <canvas id="myChartCanvas${item.id}"></canvas>
-//                     </div>
-//                     <div class="label-captura">
-//                         <p id="avisoCaptura${item.id}" style="color: white"></p>
-//                     </div>
-//                 </div>
-//             `
+    // Converte horas para formato 12 horas
+    const ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours ? hours : 12; // Se a hora for 0, ajuste para 12
 
-//             obterDadosGrafico(item.id)
-//         });
+    // Formata os minutos para garantir dois dígitos
+    const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
 
-//         if (aquarios.length > 0) {
-//             exibirAquario(aquarios[0].id)
-//         }
-//     }
-
-//     function alterarTitulo(idAquario) {
-//         var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-//         var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
-//         tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
-//     }
-
-//     function exibirAquario(idAquario) {
-//         let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
-
-//         for (i = 0; i < todosOsGraficos.length; i++) {
-//             // exibindo - ou não - o gráfico
-//             if (todosOsGraficos[i].id != idAquario) {
-//                 let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
-//                 if (elementoAtual.classList.contains("display-block")) {
-//                     elementoAtual.classList.remove("display-block")
-//                 }
-//                 elementoAtual.classList.add("display-none")
-
-//                 // alterando estilo do botão
-//                 let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
-//                 if (btnAtual.classList.contains("btn-pink")) {
-//                     btnAtual.classList.remove("btn-pink")
-//                 }
-//                 btnAtual.classList.add("btn-white")
-//             }
-//         }
-
-//         // exibindo - ou não - o gráfico
-//         let graficoExibir = document.getElementById(`grafico${idAquario}`)
-//         graficoExibir.classList.remove("display-none")
-//         graficoExibir.classList.add("display-block")
-
-//         // alterando estilo do botão
-//         let btnExibir = document.getElementById(`btnAquario${idAquario}`)
-//         btnExibir.classList.remove("btn-white")
-//         btnExibir.classList.add("btn-pink")
-//     }
-
-//     // O gráfico é construído com três funções:
-//     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-//     // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-//     // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-//     // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-//     // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-//     // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-//     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-//     //     Para ajustar o "select", ajuste o comando sql em src/models
-//     function obterDadosGrafico(idAquario) {
-
-//         alterarTitulo(idAquario)
-
-//         if (proximaAtualizacao != undefined) {
-//             clearTimeout(proximaAtualizacao);
-//         }
-
-//         fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-//             if (response.ok) {
-//                 response.json().then(function (resposta) {
-//                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-//                     resposta.reverse();
-
-//                     plotarGrafico(resposta, idAquario);
-
-//                 });
-//             } else {
-//                 console.error('Nenhum dado encontrado ou erro na API');
-//             }
-//         })
-//             .catch(function (error) {
-//                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-//             });
-//     }
-
-//     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-//     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-//     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-//     function plotarGrafico(resposta, idAquario) {
-
-//         console.log('iniciando plotagem do gráfico...');
-
-//         // Criando estrutura para plotar gráfico - labels
-//         let labels = [];
-
-//         // Criando estrutura para plotar gráfico - dados
-//         let dados = {
-//             labels: labels,
-//             datasets: [{
-//                 label: 'Umidade',
-//                 data: [],
-//                 fill: false,
-//                 borderColor: 'rgb(75, 192, 192)',
-//                 tension: 0.1
-//             },
-//             {
-//                 label: 'Temperatura',
-//                 data: [],
-//                 fill: false,
-//                 borderColor: 'rgb(199, 52, 52)',
-//                 tension: 0.1
-//             }]
-//         };
-
-//         console.log('----------------------------------------------')
-//         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-//         console.log(resposta)
-
-//         // Inserindo valores recebidos em estrutura para plotar o gráfico
-//         for (i = 0; i < resposta.length; i++) {
-//             var registro = resposta[i];
-//             labels.push(registro.momento_grafico);
-//             dados.datasets[0].data.push(registro.umidade);
-//             dados.datasets[1].data.push(registro.temperatura);
-//         }
-
-//         console.log('----------------------------------------------')
-//         console.log('O gráfico será plotado com os respectivos valores:')
-//         console.log('Labels:')
-//         console.log(labels)
-//         console.log('Dados:')
-//         console.log(dados.datasets)
-//         console.log('----------------------------------------------')
-
-//         // Criando estrutura para plotar gráfico - config
-//         const config = {
-//             type: 'line',
-//             data: dados,
-//         };
-
-//         // Adicionando gráfico criado em div na tela
-//         let myChart = new Chart(
-//             document.getElementById(`myChartCanvas${idAquario}`),
-//             config
-//         );
-
-//         setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-//     }
-
-
-//     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-//     // buscando a última medida inserida em tabela contendo as capturas, 
-
-//     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-//     //     Para ajustar o "select", ajuste o comando sql em src/models
-//     function atualizarGrafico(idAquario, dados, myChart) {
-
-
-
-//         fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-//             if (response.ok) {
-//                 response.json().then(function (novoRegistro) {
-
-//                     obterdados(idAquario);
-//                     // alertar(novoRegistro, idAquario);
-//                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-//                     console.log(`Dados atuais do gráfico:`);
-//                     console.log(dados);
-
-//                     let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
-//                     avisoCaptura.innerHTML = ""
-
-
-//                     if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-//                         console.log("---------------------------------------------------------------")
-//                         console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-//                         avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-//                         console.log("Horário do novo dado capturado:")
-//                         console.log(novoRegistro[0].momento_grafico)
-//                         console.log("Horário do último dado capturado:")
-//                         console.log(dados.labels[dados.labels.length - 1])
-//                         console.log("---------------------------------------------------------------")
-//                     } else {
-//                         // tirando e colocando valores no gráfico
-//                         dados.labels.shift(); // apagar o primeiro
-//                         dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-//                         dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-//                         dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-//                         dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-//                         dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
-//                         myChart.update();
-//                     }
-
-//                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-//                     proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-//                 });
-//             } else {
-//                 console.error('Nenhum dado encontrado ou erro na API');
-//                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-//                 proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-//             }
-//         })
-//             .catch(function (error) {
-//                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-//             });
-
-//     }
+    // Monta a data formatada
+    return `${month}, ${year} @ ${hours}:${formattedMinutes} ${ampm}`;
+  }
 </script>
-<script
-type="module"
-src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-></script>
-<script
-nomodule
-src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 <script>
-let menuToggle = document.querySelector('.menuToggle');
-let sidebar = document.querySelector('.sidebar');
-menuToggle.onclick = function(){
-  menuToggle.classList.toggle('active');
-  sidebar.classList.toggle('active');
-}
+  let menuToggle = document.querySelector(".menuToggle");
+  let sidebar = document.querySelector(".sidebar");
+  menuToggle.onclick = function () {
+    menuToggle.classList.toggle("active");
+    sidebar.classList.toggle("active");
+  };
 
-let Menulist = document.querySelectorAll('.Menulist li');
-function activeLink(){
-Menulist.forEach((item) =>
-item.classList.remove('active'));
-this.classList.add('active')
-}
-Menulist.forEach((item) =>
-item.addEventListener('click',activeLink));
-
+  let Menulist = document.querySelectorAll(".Menulist li");
+  function activeLink() {
+    Menulist.forEach((item) => item.classList.remove("active"));
+    this.classList.add("active");
+  }
+  Menulist.forEach((item) => item.addEventListener("click", activeLink));
 </script>

@@ -3,7 +3,7 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/imagem/leek.png" type="image/x-icon" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,14 +39,6 @@
               <ion-icon name="person-outline"></ion-icon>
             </div>
             <div class="text">Perfil</div>
-          </a>
-        </li>
-        <li style="--bg:#fdc600 ;">
-          <a href="./pg3_chat.html">
-            <div class="icon">
-              <ion-icon name="chatbox-outline"></ion-icon>
-            </div>
-            <div class="text">Chat</div>
           </a>
         </li>
         <li style="--bg:#fdc600 ;" class="active">
@@ -102,15 +94,15 @@
   <div class="centralizar"> 
     <main class="main">
       <!-- Formulário de postagem -->
-      <div class="newPost">
-        <div class="infoUser">
+      <div class="newPost"> <!-- Forma do novo post -->
+        <div class="infoUser"> <!-- Informações do usuario, como foto e nome -->
           <div class="imgUser" id="fotoUser">
             <img id="imgMeuUsuario" alt="">
           </div>
           <strong id="nomeUser"></strong>
         </div>
 
-        <form action="" class="formPost" id="formPost">
+        <form action="" class="formPost" id="formPost"> <!-- Criação de um form para a escolha do titulo, tema e texto do post -->
           <select name="tema" id="themePost">
             <option value="" disabled selected>Tema do post?</option>
             <option value="VOCALOID">Vocaloid</option>
@@ -139,8 +131,10 @@
 </body>
 
 <script>
+  // FUNÇÃO para enviar o post
   function enviar(){
-    
+
+    // criação de variaveis para guardar as informações do post
     var tema = themePost.value;
     var titulo = titlearea.value;
     var texto =  textarea.value;
@@ -165,7 +159,7 @@
           console.log("resposta: ", resposta);
 
           if (resposta.ok) {
-            console.log('Mensagem salva no banco!')
+            // console.log('Mensagem salva no banco!')
             exibirPosts()
           } else {
               throw "Houve um erro ao tentar realizar o post!";
@@ -177,6 +171,7 @@
 
   }
 
+  // FUNÇÃO para exibir todos os posts já feitos
   function exibirPosts(){
     const idUser = sessionStorage.getItem("ID_USUARIO")
     fetch("/perfil/verificar", {
@@ -191,8 +186,8 @@
       .then(function (resposta) {
         
         resposta.json().then(function (resposta) {
-          console.log("resposta: ", resposta);
-          console.log("Dados recebidos: ", JSON.stringify(resposta));
+          // console.log("resposta: ", resposta);
+          // console.log("Dados recebidos: ", JSON.stringify(resposta));
           perfil = resposta[0]
           imgMeuUsuario.setAttribute("src", perfil.imagem);
           nomeUser.innerHTML = `${perfil.apelido}`
@@ -203,9 +198,6 @@
        
       });
 
-
-
-
     fetch("/post/listarPosts")
     .then(function (resposta) {
       if (resposta.ok) {
@@ -215,7 +207,7 @@
         }
 
         resposta.json().then(function (resposta) {
-          console.log("Dados recebidos: ", JSON.stringify(resposta));
+          // console.log("Dados recebidos: ", JSON.stringify(resposta));
           var ContadorAuxiliar = 0;
 
           for (let i = 0; i < resposta.length; i++) {
@@ -272,11 +264,14 @@
       console.error(resposta);
     });
   }
+
+  // FUNÇÃO para pegar o horario que o post foi feito
   function getTime(tempo) {
-    const time = new Date(tempo);  // Cria um objeto Date a partir da string de entrada
-    const hour = time.getUTCHours();  // Obtém as horas no fuso horário UTC
-    const minutes = time.getUTCMinutes();  // Obtém os minutos no fuso horário UTC
+    const time = new Date(tempo);  // constante que cria um objeto Date
+    const hour = time.getHours();  // constante para pegar as horas
+    const minutes = time.getMinutes();  // constante para pegar os minutos
     return `${hour}h ${minutes}min`;
+
   }
   
 </script>
@@ -310,91 +305,5 @@
      
   </script>
 </html>
-<script type="module">/*
-export class FormPost {
-    constructor(idForm, idThemePost, idTitlearea, idTextarea, ListPost) {
-      this.form = document.getElementById(idForm);
-      this.theme = document.getElementById(idThemePost);
-      this.titlearea = document.getElementById(idTitlearea);
-      this.textarea = document.getElementById(idTextarea);
-      this.listPost = document.getElementById(ListPost);
-      this.addSubmit();
-    }
-
-    formValidate(value) {
-      if (value === "" || value === null || value === undefined || value.length < 1 || value.length > 256) {
-        return false;
-      }
-      return true;
-    }
-
-    onSubmit(func) {
-      this.form.addEventListener("submit", func);
-    }
-
-    addSubmit() {
-      const handleSubmit = (event) => {
-        event.preventDefault();
-        if (this.formValidate(this.textarea.value || this.titlearea.value || this.theme.value)) {
-          // fetch().then().catch();
-          const newPost = document.createElement("li");
-          newPost.classList.add("post");
-          const time = this.getTime();
-          newPost.innerHTML = `
-    <div class="infoUserPost">
-      <div class="imgUserPost"></div>
-
-      <div class="nameAndHour">
-        <strong id="nameUser"></strong>
-        <p>${time}</p>
-      </div>
-    </div>
-
-    <div class="contentPost-all">
-    
-     <div class="contentPost-title">
-      <h1>
-     ${this.titlearea.value}
-     </h1>    
-      </div>
-
-    <div class="contentPost-text">
-     <p>
-     ${this.textarea.value}
-     </p>
-    </div>
-    
-    <div class="contentPost-theme">
-     <h3>
-     ${this.theme.value}
-     </h3>
-    </div>
-    
-    </div>
-    </div>
-    
-    `;
-          this.listPost.appendChild(newPost);
-          this.textarea.value = "";
-        } else if (this.textarea.value.length < 1) {
-          alert("Escreva algo antes de enviar seu post!");
-        }  else if (this.textarea.value.length > 256) {
-          alert(`Você passou do limite de 256 caracteres! (${this.textarea.value.length})`);
-        } 
-      };
-
-      this.onSubmit(handleSubmit);
-    }
-
-    getTime() {
-      const time = new Date();
-      const hour = time.getHours();
-      const minutes = time.getMinutes();
-      return `${hour}h ${minutes}min`;
-    }
-  }
-
-  const postForm = new FormPost("formPost","themePost", "titlearea", "textarea", "posts");
-
-*/
+<script type="module">
 </script>

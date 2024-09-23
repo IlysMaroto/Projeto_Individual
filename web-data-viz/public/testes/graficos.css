@@ -1,9 +1,8 @@
+/* Layout básico do body e centralização */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  /* background-color: #f0f0f0; */
-  /* color: #333; */
 }
 
 body:has(.sidebar.active) .centralizar {
@@ -16,7 +15,7 @@ body:has(.sidebar.active) .centralizar {
   flex-direction: column;
   position: absolute;
   right: 0;
-  padding: 20px 20px 20px 20px;
+  padding: 20px;
   width: calc(100% - 80px);
 }
 
@@ -27,9 +26,8 @@ body:has(.sidebar.active) .centralizar {
 }
 
 .main-content {
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  align-content: space-between;
   padding: 20px;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -38,62 +36,163 @@ body:has(.sidebar.active) .centralizar {
   margin: 20px;
 }
 
-section {
-  border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 5px;
-}
-/* .infouser {
+/* Estilos para a seção de informações do usuário */
+.infouser {
   display: flex;
   flex-direction: column;
-} */
-.infouser .profile{
-  display: flex;
-  flex-direction: row;
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 5px;
-  height: 100px;
+  gap: 20px;
 }
 
-.profile .imagem img{
-  width: 100%;
-  height: 100%;
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.profile .imagem img {
+  width: 100px;
+  height: 100px;
   object-fit: cover;
-  top: 0;
-  left: 0;
   border-radius: 50%;
 }
 
-.infouser .profile .pontuacao div{
-  border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 5px;
+.profile .informacao {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* .pontuacoes */
-/* .pontuacoes #posts */
-/* .pontuacoes #velha */
-/* .pontuacoes #memoria */
+.profile .informacao h2 {
+  margin: 5px 0;
+}
 
-/* .graficoperfil #graficoperfil */
+/* Seção de Pontuações: Alinhando gráficos lado a lado */
+.pontuacoes {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
 
-/* .percentuais */
-/* .percentuais #genero */
-/* .percentuais #como */
-/* .percentuais #atuacao */
+/* Centralizar graficoPontuacaoDiaUsuario abaixo dos dois gráficos */
+.graficoperfil {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 
-/* .posts  */
-/* .posts #graficolinhapost */
-/* .posts #graficopizzapost */
+#graficoPontuacaoDiaUsuario {
+  display: flex;
+  height: 500px;
+  justify-content: center;
+  margin-top: 20px;
+}
 
-/* .ranking */
-/* .ranking #jogovelha */
-/* .ranking #jogovelha #graficorankvelha */
-/* .ranking #jogovelha #mediapontuacaovelha */
+#graficoPontuacaoDiaUsuario canvas {
+  width: 100%;
+  height: auto;
+}
+
+/* Seção de Percentuais - Gráficos menores lado a lado */
+section.percentuais {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 300px;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+#genero,
+#como,
+#atuacao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(33.33% - 20px); /* Distribui os gráficos igualmente */
+}
+
+#genero canvas,
+#como canvas,
+#atuacao canvas {
+  max-width: 250px;
+  max-height: 250px;
+}
+
+/* Ajustes visuais */
+section {
+  display: flex;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+}
+
+#posts {
+  display: flex;
+  height: auto;
+  width: auto;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  align-items: center;
+  
+}
+
+#graficoPostsDiaUsuario{
+  width: 500px;
+  height: 400px;
+  align-items: center;
+  display: flex;
+}
+#postsUsuario {
+  height: 300px;
+  display: flex;
+}
+
+/* Gráficos de postagens do usuário lado a lado */
+section.posts {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+#graficoPostsDia,
+#graficoBarraJogos {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Seção de Popularidade - Gráficos lado a lado */
+section.ranking {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+  
+}
 
 
-
-/* .ranking #jogomemoria */
-/* .ranking #jogomemoria #graficorankmemoria */
-/* .ranking #jogomemoria #mediapontuacaomemoria */
+#popularidadeTemas {
+  flex: 1;
+  display: flex;
+  margin: 50px;
+  justify-content: center;
+  align-self: center;
+}
+#popularidadeVocaloid {
+  flex: 1;
+  display: flex;
+  margin: 50px;
+  justify-content: center;
+  align-self: center;
+  width: 300px;
+  height: 400px;
+}

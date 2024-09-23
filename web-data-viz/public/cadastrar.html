@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>39Talk</title>
     <link rel="stylesheet" href="cadastrar.css" />
-    <!-- <link rel="stylesheet" href="index.css"> -->
+    <link rel="shortcut icon" href="../assets/imagem/leek.png" type="image/x-icon" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
@@ -157,10 +157,10 @@
     var vocaloidVar = vocaFav.value;
     var comoConheceuVar = comoVar.value;
     if (usuarioVar === "" || emailVar === "" || senhaVar === "" || apelidoVar === "" || nascVar === "" || generoVar === "" || vocaloidVar === "" || comoConheceuVar === "") {
-      console.log("Informações Incompletas")
+      // console.log("Informações Incompletas")
       return false;
     }
-    console.log(usuarioVar, emailVar, senhaVar, confirmacaoSenhaVar, apelidoVar, nascVar, generoVar, vocaloidVar, comoConheceuVar);
+    // console.log(usuarioVar, emailVar, senhaVar, confirmacaoSenhaVar, apelidoVar, nascVar, generoVar, vocaloidVar, comoConheceuVar);
     // Enviando o valor da nova input
     if (senhaVar !== confirmacaoSenhaVar) return false;
     fetch("/usuarios/cadastrar", {
@@ -182,17 +182,17 @@
       }),
     })
       .then(function (resposta) {
-        console.log("resposta: ", resposta);
+        // console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+          // console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
           setTimeout(() => {
             window.location = "cadastrar.html";
           }, "2000");
         } else {
           resposta.text().then((text) => {
-          console.log(text);
+          // console.log(text);
         });
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
@@ -223,8 +223,8 @@
       //   setInterval(sumirMensagem, 5000);
     }
 
-    console.log("FORM LOGIN: ", emailVar);
-    console.log("FORM SENHA: ", senhaVar);
+    // console.log("FORM LOGIN: ", emailVar);
+    // console.log("FORM SENHA: ", senhaVar);
 
     fetch("/usuarios/autenticar", {
       method: "POST",
@@ -237,14 +237,14 @@
       }),
     })
       .then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!");
+        // console.log("ESTOU NO THEN DO entrar()!");
 
         if (resposta.ok) {
-          console.log(resposta);
+          // console.log(resposta);
 
           resposta.json().then((json) => {
-            console.log("aaa" + json);
-            console.log(JSON.stringify(json));
+            // console.log("aaa" + json);
+            // console.log(JSON.stringify(json));
             sessionStorage.ID_USUARIO = json.idusuario;
             sessionStorage.NOME_USUARIO = json.nome;
             sessionStorage.EMAIL_USUARIO = json.email;

@@ -123,8 +123,12 @@ body {
     justify-content: space-between;
 }
 .profile-name span {
+    overflow: auto;
+    display: block;
     font-size: 2rem;
     font-weight: 600;
+    width: 200px;
+    max-height: 2em;
 }
 .profile-sidebar .section:has(.editavel) {
     border: 2px solid lime;
@@ -177,6 +181,7 @@ pre {
 
   .column-content {
     flex-direction: column;
+    width: 650px;
   }
 
 .post-container {

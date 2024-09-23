@@ -2,7 +2,7 @@
 -- ra: 04241067
 -- criação do banco de dados para o projeto individual
 
-drop database if exists 39talk;
+-- drop database if exists 39talk;
 create database 39talk;
 use 39talk;
 
@@ -13,12 +13,12 @@ cortema varchar(256)
 );
 
 insert into vocaloid (nomevocaloid, cortema) values
-('Meiko', '#DE4444'), 
-('Kaito', '#3367CD'), 
-('Hatsune Miku', '#33CCBA'),
-('Kagamine Rin', '#fdc600'), 
-('Kagamine Len', '#FFEE12'), 
-('Megurine Luka','#FFBACC'); 
+('meiko', '#DE4444'), 
+('kaito', '#3367CD'), 
+('hatsune miku', '#33CCBA'),
+('kagamine rin', '#fdc600'), 
+('kagamine len', '#FFEE12'), 
+('megurine luka','#FFBACC'); 
 
 create table imagemperfil (
 idimagemperfil int primary key auto_increment,
@@ -41,7 +41,8 @@ genero varchar(256)
 
 insert into genero(genero) values
 ('masculino'),
-('feminino');
+('feminino'),
+('prefiro não opinar');
 
 create table conhecimento(
 idconhecimento int primary key auto_increment,
@@ -49,12 +50,12 @@ como varchar(256)
 );
 
 insert into conhecimento(como) values
-('Amigos'),
-('Internet'),
-('Familiares'),
-('Jogos'),
-('Trabalho'),
-('Outro');
+('amigos'),
+('internet'),
+('familiares'),
+('jogos'),
+('trabalho'),
+('outro');
 
 create table atuacao(
 idatuacao int primary key auto_increment,
@@ -62,13 +63,13 @@ atuacao varchar(256)
 );
 
 insert into atuacao(atuacao) values
-('Fã'),
-('Produtor de Conteúdo'),
-('Produtor de Música'),
-('Jogador'),
-('Artista'),
-('Cosplayer'),
-('Outro');
+('fa'),
+('conteudo'),
+('musica'),
+('jogador'),
+('artista'),
+('cosplayer'),
+('outro');
 
 create table usuario(
 idusuario int primary key auto_increment,
@@ -82,10 +83,6 @@ fkgenero int,
 foreign key (fkconhecimento) references conhecimento(idconhecimento),
 foreign key (fkgenero) references genero(idgenero)
 );
-
-insert into usuario (nome, email, senha, nasc, fkconhecimento, fkgenero) values
-('teste', 'teste', 'teste', '2020-01-01', 1, 1);
-select * from usuario;
 
 create table jogo(
 idjogo int primary key auto_increment,
@@ -101,14 +98,13 @@ idpontuacao int auto_increment,
 fkjogo int,
 fkusuario int,
 pontuacao int,
-vezesjogadas int,
-datahora datetime,
+tempojogado time,
+datahora timestamp default current_timestamp,
 
 primary key (idpontuacao, fkjogo, fkusuario),
 foreign key (fkjogo) references jogo(idjogo),
 foreign key (fkusuario) references usuario(idusuario)
 );
-
 
 create table perfil (
 idperfil int auto_increment,
@@ -129,23 +125,12 @@ foreign key (fkvocaloid) references vocaloid(idvocaloid),
 foreign key (fkatuacao) references atuacao(idatuacao)
 );
 
--- EXCLUIR MENSAGEM
--- create table mensagem(
--- idmensagem int auto_increment,
--- mensagem varchar(256),
--- datahora datetime,
--- fkusuario int,
-
--- primary key (idmensagem, fkusuario),
--- foreign key (fkusuario) references usuario(idusuario)
--- );
-
 create table post(
-idpost int,
+idpost int auto_increment,
 tema varchar(256),
 titulo varchar(256),
 texto varchar(256),
-datahora datetime,
+datahora timestamp default current_timestamp,
 fkusuario int,
 
 primary key (idpost, fkusuario),

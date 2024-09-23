@@ -2,7 +2,7 @@ var postModel = require("../models/postModel");
 
 function cadastrar(req, res) {
   // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-  console.log(req.body)
+  // console.log(req.body)
   var nome = req.body.nomeServer;
   var email = req.body.emailServer;
   var senha = req.body.senhaServer;
@@ -60,11 +60,11 @@ function autenticar(req, res) {
     usuarioModel
       .autenticar(email, senha)
       .then(function (resultadoAutenticar) {
-        console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-        console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+        // console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+        // console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
         if (resultadoAutenticar.length == 1) {
-          console.log(resultadoAutenticar);
+          // console.log(resultadoAutenticar);
            
               res.json({
                 idusuario: resultadoAutenticar[0].idusuario,
@@ -147,8 +147,8 @@ function listarMeusPosts(req, res) {
           res.status(400).send("O ID está undefined!");
   } else {
       postModel.listarMeusPosts(idusuario).then(function (resultadoVerificar) {
-          console.log(`\nResultados encontrados: ${resultadoVerificar.length}`);
-          console.log(`Resultados: ${JSON.stringify(resultadoVerificar)}`); // transforma JSON em String
+          // console.log(`\nResultados encontrados: ${resultadoVerificar.length}`);
+          // console.log(`Resultados: ${JSON.stringify(resultadoVerificar)}`); // transforma JSON em String
           res.status(200).json(resultadoVerificar);
   })
         .catch(function (erro) {

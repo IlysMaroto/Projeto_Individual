@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="../assets/imagem/leek.png" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../css/jogomemoria.css" />
     <title>Jogo da memória</title>
@@ -222,21 +223,21 @@
 
     if (cardsVirados == cards.length) {
       clearInterval(timeInterval);
-      tempo = time / 100;
+      time = time / 100;
       divMensagem.innerHTML = `<p>Pontuação: ${score} pontos!</p><p>Tempo: ${time / 100} segundos!</p>`;
-      tempo = secondsToTime(tempo)
-      alert(tempo)
+      time = secondsToTime(time)
+      alert("Parabéns, você terminou o jogo com uma pontuação de " + score + ", sendo seu tempo para terminar o jogo de " + time)
       salvarJogo()
       jogo.style.display = "none";
       caixaFim.style.display = "";
 
       window.location.reload();
-      //lembrar de colocar um fetch aqui
     }
   }
 
   function salvarJogo(){
-    var fkjogo = 2; 
+    var fkjogo = 2;
+    console.log(idUser, time, score);
     fetch("/jogo/salvarMemoria", {
       method: "POST",
       headers: {
@@ -249,14 +250,14 @@
           fkJogoServer: fkjogo,
           fkUsuarioServer: idUser,
           pontuacaoServer: score,
-          tempoJogadoServer: tempo,
+          tempoJogadoServer: time,
       }),
   })
       .then(function (resposta) {
           console.log("resposta: ", resposta);
 
           if (resposta.ok) {
-            console.log('Mensagem salva no banco!')
+            // console.log('Mensagem salva no banco!')
             exibirPosts()
           } else {
               throw "Houve um erro ao tentar realizar o post!";
